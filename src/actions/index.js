@@ -1,7 +1,6 @@
 
 import axios from 'axios'
 import { browserHistory } from 'react-router';
-import cookie from 'react-cookie';
 
 export const AUTH_USER = 'auth_user',
              UNAUTH_USER = 'unauth_user',
@@ -41,8 +40,8 @@ export function loginUser({ email, password }) {
   return function(dispatch) {
     axios.post(`${API_URL}/auth/login`, { email, password })
     .then(response => {
-      cookie.save('token', response.data.token, { path: '/' });
-      dispatch({ type: AUTH_USER });
+      // cookie.save('token', response.data.token, { path: '/' });
+      // dispatch({ type: AUTH_USER });
       window.location.href = CLIENT_ROOT_URL + '/dashboard';
     })
     .catch((error) => {
@@ -55,8 +54,8 @@ export function registerUser({ email, firstName, lastName, password }) {
   return function(dispatch) {
     axios.post(`${API_URL}/auth/register`, { email, firstName, lastName, password })
     .then(response => {
-      cookie.save('token', response.data.token, { path: '/' });
-      dispatch({ type: AUTH_USER });
+      // cookie.save('token', response.data.token, { path: '/' });
+      // dispatch({ type: AUTH_USER });
       window.location.href = CLIENT_ROOT_URL + '/dashboard';
     })
     .catch((error) => {
@@ -68,7 +67,7 @@ export function registerUser({ email, firstName, lastName, password }) {
 export function logoutUser() {
   return function (dispatch) {
     dispatch({ type: UNAUTH_USER });
-    cookie.remove('token', { path: '/' });
+    // cookie.remove('token', { path: '/' });
 
     window.location.href = CLIENT_ROOT_URL + '/login';
   }
@@ -77,7 +76,7 @@ export function logoutUser() {
 export function protectedTest() {
   return function(dispatch) {
     axios.get(`${API_URL}/protected`, {
-      headers: { 'Authorization': cookie.load('token') }
+      headers: { 'Authorization': 'personal note token should be here'}
     })
     .then(response => {
       dispatch({
