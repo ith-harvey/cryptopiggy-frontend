@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { registerUser } from '../../actions';
+import { Link } from 'react-router-dom'
 
 const form = reduxForm({
   form: 'register',
@@ -81,6 +82,7 @@ class Register extends Component {
           </div>
         </div>
         <button type="submit" className="btn btn-primary">Register</button>
+        <Link to="/login" className="btn btn-primary">To Login </Link>
       </form>
     );
   }
@@ -93,4 +95,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { registerUser })(form(Register));  
+export default connect(mapStateToProps, { registerUser })(form(Register));

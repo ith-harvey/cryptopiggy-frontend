@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom'
 import { loginUser } from '../../actions';
 
 const form = reduxForm({
@@ -40,6 +40,7 @@ class Login extends Component {
           </div>
           <button type="submit" className="btn btn-primary">Login</button>
         </form>
+        <Link to="/register" className="btn btn-primary">Register</Link>
       </div>
     );
   }

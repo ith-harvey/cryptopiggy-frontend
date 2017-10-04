@@ -40,8 +40,8 @@ export function loginUser({ email, password }) {
   return function(dispatch) {
     axios.post(`${API_URL}/auth/login`, { email, password })
     .then(response => {
-      // cookie.save('token', response.data.token, { path: '/' });
-      // dispatch({ type: AUTH_USER });
+      dispatch({ type: AUTH_USER }); //setting state (Redux's Style)
+      localStorage.setItem('jwtToken', response.data.token);
       window.location.href = CLIENT_ROOT_URL + '/dashboard';
     })
     .catch((error) => {
@@ -54,8 +54,8 @@ export function registerUser({ email, firstName, lastName, password }) {
   return function(dispatch) {
     axios.post(`${API_URL}/auth/register`, { email, firstName, lastName, password })
     .then(response => {
-      // cookie.save('token', response.data.token, { path: '/' });
-      // dispatch({ type: AUTH_USER });
+      dispatch({ type: AUTH_USER }); //setting state (Redux's Style)
+      localStorage.setItem('jwtToken', response.data.token);
       window.location.href = CLIENT_ROOT_URL + '/dashboard';
     })
     .catch((error) => {
@@ -67,7 +67,7 @@ export function registerUser({ email, firstName, lastName, password }) {
 export function logoutUser() {
   return function (dispatch) {
     dispatch({ type: UNAUTH_USER });
-    // cookie.remove('token', { path: '/' });
+    console.log('need to remove local storage somehow')
 
     window.location.href = CLIENT_ROOT_URL + '/login';
   }
