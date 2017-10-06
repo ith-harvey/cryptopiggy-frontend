@@ -9,7 +9,7 @@ export const AUTH_USER = 'auth_user',
              RESET_PASSWORD_REQUEST = 'reset_password_request',
              PROTECTED_TEST = 'protected_test';
 
-const ROOT_URL = 'http://localhost:3000/'
+const ROOT_URL = 'http://localhost:3000'
 
 export function errorHandler(dispatch, error, type) {
   let errorMessage = '';
@@ -21,7 +21,6 @@ export function errorHandler(dispatch, error, type) {
   } else {
     errorMessage = error;
   }
-
   if(error.status === 401) {
     dispatch({
       type: type,
@@ -36,13 +35,16 @@ export function errorHandler(dispatch, error, type) {
   }
 }
 
-export function loginUser({ email, password }) {
+export function loginUser({ username, password }, callback) {
   return function(dispatch) {
-    axios.post(`${API_URL}/auth/login`, { email, password })
-    .then(response => {
+    axios({
+      method: 'post',
+      url: `${ROOT_URL}/auth/signin`,
+      data: { username, password }
+    }).then(response => {
       dispatch({ type: AUTH_USER }); //setting state (Redux's Style)
       localStorage.setItem('jwtToken', response.data.token);
-      window.location.href = CLIENT_ROOT_URL + '/dashboard';
+      callback()
     })
     .catch((error) => {
       errorHandler(dispatch, error.response, AUTH_ERROR)
@@ -50,13 +52,13 @@ export function loginUser({ email, password }) {
     }
 }
 
-export function registerUser({ email, firstName, lastName, password }) {
+export function registerUser({ username, password }) {
   return function(dispatch) {
-    axios.post(`${API_URL}/auth/register`, { email, firstName, lastName, password })
+    axios.post(`${ROOT_URL}/auth/signup`, { username, password })
     .then(response => {
       dispatch({ type: AUTH_USER }); //setting state (Redux's Style)
       localStorage.setItem('jwtToken', response.data.token);
-      window.location.href = CLIENT_ROOT_URL + '/dashboard';
+      window.location.href = CLIENT_ROOT_URL;
     })
     .catch((error) => {
       errorHandler(dispatch, error.response, AUTH_ERROR)
@@ -64,18 +66,17 @@ export function registerUser({ email, firstName, lastName, password }) {
   }
 }
 
-export function logoutUser() {
+export function logoutUser(callback) {
   return function (dispatch) {
     dispatch({ type: UNAUTH_USER });
-    console.log('need to remove local storage somehow')
-
-    window.location.href = CLIENT_ROOT_URL + '/login';
+    localStorage.removeItem('jwtToken');
+    callback()
   }
 }
 
 export function protectedTest() {
   return function(dispatch) {
-    axios.get(`${API_URL}/protected`, {
+    axios.get(`${ROOT_URL}/protected`, {
       headers: { 'Authorization': 'personal note token should be here'}
     })
     .then(response => {

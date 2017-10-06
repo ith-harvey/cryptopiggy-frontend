@@ -14,14 +14,10 @@ import NotFoundPage from './component_notfound'
 import RequireAuth from './auth/component_require_auth';
 
 
-let token = localStorage.getItem('jwtToken')
-
-if (token) {
-  console.log('token exists')
-  store.dispatch({ type: AUTH_USER })
-}
-
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
+
+
+
 
 class App extends Component {
 

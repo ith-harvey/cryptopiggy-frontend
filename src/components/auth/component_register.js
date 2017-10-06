@@ -19,14 +19,6 @@ const renderField = field => (
 function validate(formProps) {
   const errors = {};
 
-  if (!formProps.firstName) {
-    errors.firstName = 'Please enter a first name';
-  }
-
-  if (!formProps.lastName) {
-    errors.lastName = 'Please enter a last name';
-  }
-
   if (!formProps.email) {
     errors.email = 'Please enter an email';
   }
@@ -59,20 +51,10 @@ class Register extends Component {
     return (
       <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
       {this.renderAlert()}
-      <div className="row">
-        <div className="col-md-6">
-          <label>First Name</label>
-          <Field name="firstName" className="form-control" component={renderField} type="text" />
-        </div>
-        <div className="col-md-6">
-          <label>Last Name</label>
-          <Field name="lastName" className="form-control" component={renderField} type="text" />
-        </div>
-      </div>
         <div className="row">
           <div className="col-md-12">
-            <label>Email</label>
-            <Field name="email" className="form-control" component={renderField} type="text" />
+            <label>Username</label>
+            <Field name="username" className="form-control" component={renderField} type="text" />
           </div>
         </div>
         <div className="row">
@@ -81,8 +63,8 @@ class Register extends Component {
             <Field name="password" className="form-control" component={renderField} type="password" />
           </div>
         </div>
-        <button type="submit" className="btn btn-primary">Register</button>
-        <Link to="/login" className="btn btn-primary">To Login </Link>
+        <button type="submit" className="bttn">Register</button>
+        <Link to="/login" className="bttn">To Login </Link>
       </form>
     );
   }

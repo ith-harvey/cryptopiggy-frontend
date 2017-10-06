@@ -10,13 +10,15 @@ const form = reduxForm({
 
 class Login extends Component {
   handleFormSubmit(formProps) {
-    this.props.loginUser(formProps);
+    this.props.loginUser(formProps, () => {
+      this.props.history.push('/')
+    });
   }
 
   renderAlert() {
     if(this.props.errorMessage) {
       return (
-        <div>
+        <div className="alert alert-danger">
           <span><strong>Error!</strong> {this.props.errorMessage}</span>
         </div>
       );
@@ -31,16 +33,17 @@ class Login extends Component {
         <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
         {this.renderAlert()}
           <div>
-            <label>Email</label>
-            <Field name="email" className="form-control" component="input" type="text" />
+            <label>Username</label>
+            <Field name="username" className="form-control" component="input" type="text" />
           </div>
           <div>
             <label>Password</label>
             <Field name="password" className="form-control" component="input" type="password" />
           </div>
-          <button type="submit" className="btn btn-primary">Login</button>
+          <button type="submit" className="bttn">Login</button>
+          <Link to="/register" className="bttn">Register</Link>
         </form>
-        <Link to="/register" className="btn btn-primary">Register</Link>
+
       </div>
     );
   }
