@@ -90,3 +90,17 @@ export function protectedTest() {
     });
   }
 }
+
+export function addAddress({ address }) {
+  return function(dispatch) {
+    let token = localStorage.getItem('jwtToken')
+    axios.post(`${ROOT_URL}/address`, { address, token })
+    .then(response => {
+      console.log('response from serv', respons)
+      dispatch({ type: AUTH_USER }); //setting state (Redux's Style)
+    })
+    .catch((error) => {
+      errorHandler(dispatch, error.response, AUTH_ERROR)
+    });
+  }
+}
