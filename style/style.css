@@ -72,7 +72,9 @@ ul li .bttn {
   justify-content: center;
 }
 
-.container-address {
+.address {
+  font-size: 1.5rem;
+  color: lightgrey;
 }
 
 .footer {

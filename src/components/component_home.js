@@ -3,8 +3,8 @@ import {connect} from 'react-redux';
 import {Button} from 'react-bootstrap';
 import {logoutUser} from '../actions';
 import AddressForm from './component_addressForm';
+import AddressList from './component_addressList'
 
-console.log('our token', localStorage.getItem('jwtToken'))
 
 class Home extends Component {
 
@@ -30,10 +30,9 @@ class Home extends Component {
               </div>
             </div>
           </nav>
-
           <div className="row container-address">
             <div className="col-xs-10">
-              <div>array of values</div>
+              <AddressList />
             </div>
           </div>
           <div className="row container-adress-input">

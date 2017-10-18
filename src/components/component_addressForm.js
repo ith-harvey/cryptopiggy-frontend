@@ -29,7 +29,6 @@ function validate(formProps) {
 class AddressForm extends Component {
 
   handleFormSubmit(formProps) {
-    console.log('address in comp', formProps)
     this.props.addAddress(formProps);
   }
 
@@ -50,11 +49,10 @@ class AddressForm extends Component {
       <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
         {this.renderAlert()}
         <div className="row">
-          <div className="col-md-8">
-            <label>public address</label>
+          <div className="col-xs-8">
             <Field name="address" className="form-control" component={renderField} type="text" />
           </div>
-          <div className="col-md-4">
+          <div className="col-xs-4">
             <button type="submit" className="bttn">add address</button>
           </div>
         </div>

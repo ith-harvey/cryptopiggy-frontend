@@ -7,7 +7,9 @@ export const AUTH_USER = 'auth_user',
              AUTH_ERROR = 'auth_error',
              FORGOT_PASSWORD_REQUEST = 'forgot_password_request',
              RESET_PASSWORD_REQUEST = 'reset_password_request',
-             PROTECTED_TEST = 'protected_test';
+             PROTECTED_TEST = 'protected_test',
+             ADDRESS_FETCHED = 'address_fetched',
+             ADDRESS_ERROR = 'address_error';
 
 const ROOT_URL = 'http://localhost:3000'
 
@@ -93,14 +95,55 @@ export function protectedTest() {
 
 export function addAddress({ address }) {
   return function(dispatch) {
+    console.log('addAddresses ran')
     let token = localStorage.getItem('jwtToken')
     axios.post(`${ROOT_URL}/address`, { address, token })
     .then(response => {
-      console.log('response from serv', respons)
-      dispatch({ type: AUTH_USER }); //setting state (Redux's Style)
+      console.log('what we get back rom addAddress', response)
+      dispatch({
+        type: ADDRESS_FETCHED,
+        payload: response.data
+      });
     })
     .catch((error) => {
-      errorHandler(dispatch, error.response, AUTH_ERROR)
+      console.log(error)
+      errorHandler(dispatch, error.response, ADDRESS_ERROR)
+    });
+  }
+}
+
+export function fetchAddresses() {
+  return function(dispatch) {
+    let token = localStorage.getItem('jwtToken')
+    axios.post(`${ROOT_URL}/address/user`, { token })
+    .then(response => {
+      console.log('response from serv', response)
+      dispatch({
+        type: ADDRESS_FETCHED,
+        payload: response.data
+      });
+    })
+    .catch((error) => {
+      console.log(error)
+      errorHandler(dispatch, error.response, ADDRESS_ERROR)
+    });
+  }
+}
+
+export function deleteAddress(id) {
+  return function(dispatch) {
+    console.log('our id?', id)
+    axios.delete(`${ROOT_URL}/address/${id}`)
+    .then(response => {
+      console.log('response from serv', response)
+      dispatch({
+        type: ADDRESS_FETCHED,
+        payload: response.data
+      });
+    })
+    .catch((error) => {
+      console.log(error)
+      errorHandler(dispatch, error.response, ADDRESS_ERROR)
     });
   }
 }
