@@ -93,17 +93,12 @@ export function protectedTest() {
   }
 }
 
-export function addAddress({ address }) {
+export function addAddress({ address }, callback) {
   return function(dispatch) {
-    console.log('addAddresses ran')
     let token = localStorage.getItem('jwtToken')
     axios.post(`${ROOT_URL}/address`, { address, token })
     .then(response => {
-      console.log('what we get back rom addAddress', response)
-      dispatch({
-        type: ADDRESS_FETCHED,
-        payload: response.data
-      });
+      callback() // runs fetchAddresses
     })
     .catch((error) => {
       console.log(error)
@@ -114,11 +109,9 @@ export function addAddress({ address }) {
 
 export function fetchAddresses() {
   return function(dispatch) {
-    console.log('running fetch')
     let token = localStorage.getItem('jwtToken')
     axios.post(`${ROOT_URL}/address/user`, { token })
     .then(response => {
-      console.log('response from serv', response)
       dispatch({
         type: ADDRESS_FETCHED,
         payload: response.data
@@ -133,11 +126,10 @@ export function fetchAddresses() {
 
 export function deleteAddress(id, callback) {
   return function(dispatch) {
-    console.log('our id?', id)
     axios.delete(`${ROOT_URL}/address/${id}`)
     .then(response => {
       console.log('response from serv', response)
-      callback()
+      callback() // runs fetchAddresses
     })
     .catch((error) => {
       console.log(error)

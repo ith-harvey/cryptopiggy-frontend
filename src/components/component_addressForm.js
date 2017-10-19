@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { addAddress } from '../actions';
+import { addAddress, fetchAddresses } from '../actions';
 
 
 const form = reduxForm({
@@ -29,7 +29,9 @@ function validate(formProps) {
 class AddressForm extends Component {
 
   handleFormSubmit(formProps) {
-    this.props.addAddress(formProps);
+    this.props.addAddress(formProps, () => {
+      this.props.fetchAddresses()
+    });
   }
 
   renderAlert() {
@@ -68,4 +70,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {addAddress})(form(AddressForm))
+export default connect(mapStateToProps, {addAddress, fetchAddresses})(form(AddressForm))
