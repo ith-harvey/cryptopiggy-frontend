@@ -114,6 +114,7 @@ export function addAddress({ address }) {
 
 export function fetchAddresses() {
   return function(dispatch) {
+    console.log('running fetch')
     let token = localStorage.getItem('jwtToken')
     axios.post(`${ROOT_URL}/address/user`, { token })
     .then(response => {
@@ -130,16 +131,13 @@ export function fetchAddresses() {
   }
 }
 
-export function deleteAddress(id) {
+export function deleteAddress(id, callback) {
   return function(dispatch) {
     console.log('our id?', id)
     axios.delete(`${ROOT_URL}/address/${id}`)
     .then(response => {
       console.log('response from serv', response)
-      dispatch({
-        type: ADDRESS_FETCHED,
-        payload: response.data
-      });
+      callback()
     })
     .catch((error) => {
       console.log(error)

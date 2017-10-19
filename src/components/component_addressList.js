@@ -12,10 +12,10 @@ class AddressList extends Component {
 
   onDeleteAddress(id) {
     console.log('delete', id)
-    this.props.deleteAddress(id)
+    this.props.deleteAddress(id, () => {
+      this.props.fetchAddresses()
+    })
   }
-
-
 
   render() {
     let addressNodes = this.props.addressesArr.map(address => {
@@ -24,7 +24,7 @@ class AddressList extends Component {
           uniqueID={address.id}
           address={address.address}
           amount={address.amount_in_wallet}
-          deleteAddress={() => onDeleteAddress(address.id).bind(this)}
+          deleteAddress={() => this.onDeleteAddress(address.id)}
           key={ address.id} >
         </Address>
       )
