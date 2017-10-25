@@ -9,9 +9,9 @@ class Address extends Component {
     return (
       <div>
         <div className="row">
-          <div className="col-xs-10">
+          <div className="col-xs-8">
             <span className="address">{this.props.address}</span>
-            <p>{this.props.amount}</p>
+            <p>{this.props.amountEth} | ${this.props.amountUsd}</p>
           </div>
           <div className="col-xs-2">
             <Glyphicon onClick={this.props.deleteAddress} glyph="remove-circle"></Glyphicon>

@@ -124,6 +124,7 @@ export function fetchAddresses() {
   }
 }
 
+
 export function deleteAddress(id, callback) {
   return function(dispatch) {
     axios.delete(`${ROOT_URL}/address/${id}`)

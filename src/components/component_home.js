@@ -43,8 +43,8 @@ class Home extends Component {
         </div>
         <div className="row footer">
           <div className="col-xs-10">
-            <p>Total of all wallets</p>
-            <h2>total</h2>
+            <p>Total Ether: {this.props.totalEth}</p>
+            <h4>Total in USD: ${this.props.totalUSD}</h4>
           </div>
         </div>
       </div>
@@ -53,4 +53,12 @@ class Home extends Component {
   }
 }
 
-export default connect(null, {logoutUser})(Home)
+function mapStateToProps(state) {
+  return {
+    totalEth: state.address.totalCrypto,
+    totalUSD: state.address.totalUSD,
+  }
+
+}
+
+export default connect(mapStateToProps, {logoutUser})(Home)

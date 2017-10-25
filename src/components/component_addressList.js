@@ -1,13 +1,15 @@
 import React, {Component} from 'react'
 import Address from './component_address'
 import {fetchAddresses, deleteAddress} from '../actions'
+import {allAddressesWithBalance} from '../actions/etherscan'
 import {connect} from 'react-redux';
 
-class AddressList extends Component {
 
+
+class AddressList extends Component {
   // map function
-  componentDidMount() {
-    this.props.fetchAddresses()
+  componentWillMount() {
+    this.props.allAddressesWithBalance()
   }
 
   onDeleteAddress(id) {
@@ -23,7 +25,8 @@ class AddressList extends Component {
         <Address
           uniqueID={address.id}
           address={address.address}
-          amount={address.amount_in_wallet}
+          amountEth={address.amount_in_wallet}
+          amountUsd={address.amount_in_usd}
           deleteAddress={() => this.onDeleteAddress(address.id)}
           key={ address.id} >
         </Address>
@@ -47,4 +50,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps, {deleteAddress, fetchAddresses})(AddressList)
+export default connect(mapStateToProps, {deleteAddress, fetchAddresses, allAddressesWithBalance})(AddressList)
