@@ -40,11 +40,11 @@ class Home extends Component {
               <AddressForm />
             </div>
           </div>
-        </div>
-        <div className="row footer">
-          <div className="col-xs-10">
-            <p>Total Ether: {this.props.totalEth}</p>
-            <h4>Total in USD: ${this.props.totalUSD}</h4>
+          <div className="row footer">
+            <div className="col-xs-10">
+              <p>Total Ether: {this.props.totalEth}</p>
+              <h4>Total in USD: ${this.props.totalUSD}</h4>
+            </div>
           </div>
         </div>
       </div>

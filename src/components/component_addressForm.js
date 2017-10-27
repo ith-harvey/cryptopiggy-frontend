@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { addAddress, fetchAddresses } from '../actions';
+import { addAddress } from '../actions';
+import { allAddressesWithBalance } from '../actions/etherscan'
 
 
 const form = reduxForm({
@@ -30,7 +31,7 @@ class AddressForm extends Component {
 
   handleFormSubmit(formProps) {
     this.props.addAddress(formProps, () => {
-      this.props.fetchAddresses()
+      this.props.allAddressesWithBalance()
     });
   }
 
@@ -70,4 +71,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {addAddress, fetchAddresses})(form(AddressForm))
+export default connect(mapStateToProps, {addAddress, allAddressesWithBalance})(form(AddressForm))
