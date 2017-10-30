@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom'
 import { loginUser } from '../../actions';
+import Logo from './component_logo';
 
 const form = reduxForm({
   form: 'login'
@@ -29,22 +30,26 @@ class Login extends Component {
     const { handleSubmit } = this.props;
 
     return (
-      <div>
-        <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-        {this.renderAlert()}
+        <div className="container">
           <div>
-            <label>Username</label>
-            <Field name="username" className="form-control" component="input" type="text" />
+            <Logo />
           </div>
-          <div>
-            <label>Password</label>
-            <Field name="password" className="form-control" component="input" type="password" />
+          <div className="col-xs-10 col-xs-offset-1">
+          <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+          {this.renderAlert()}
+            <div>
+              <label>Username</label>
+              <Field name="username" className="form-control" component="input" type="text" />
+            </div>
+            <div>
+              <label>Password</label>
+              <Field name="password" className="form-control" component="input" type="password" />
+            </div>
+            <button type="submit" className="bttn">Login</button>
+            <Link to="/register" className="bttn">Register</Link>
+          </form>
           </div>
-          <button type="submit" className="bttn">Login</button>
-          <Link to="/register" className="bttn">Register</Link>
-        </form>
-
-      </div>
+        </div>
     );
   }
 }

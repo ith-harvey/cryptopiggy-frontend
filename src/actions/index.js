@@ -37,7 +37,7 @@ export function errorHandler(dispatch, error, type) {
   }
 }
 
-export function loginUser({ username, password }, callback) {
+export function loginUser({ username, password,  }, callback) {
   return function(dispatch) {
     axios({
       method: 'post',
@@ -54,17 +54,22 @@ export function loginUser({ username, password }, callback) {
     }
 }
 
-export function registerUser({ username, password }) {
+export function registerUser({ username, password, doublechkpassword }) {
   return function(dispatch) {
-    axios.post(`${ROOT_URL}/auth/signup`, { username, password })
-    .then(response => {
-      dispatch({ type: AUTH_USER }); //setting state (Redux's Style)
-      localStorage.setItem('jwtToken', response.data.token);
-      window.location.href = CLIENT_ROOT_URL;
-    })
-    .catch((error) => {
+    if(password === doublechkpassword) {
+      axios.post(`${ROOT_URL}/auth/signup`, { username, password })
+      .then(response => {
+        dispatch({ type: AUTH_USER }); //setting state (Redux's Style)
+        localStorage.setItem('jwtToken', response.data.token);
+        window.location.href = CLIENT_ROOT_URL;
+      })
+      .catch((error) => {
+        errorHandler(dispatch, error.response, AUTH_ERROR)
+      });
+    } else {
+      error.response = 'password fields must match'
       errorHandler(dispatch, error.response, AUTH_ERROR)
-    });
+    }
   }
 }
 

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { registerUser } from '../../actions';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import Logo from './component_logo';
 
 const form = reduxForm({
   form: 'register',
@@ -49,23 +50,34 @@ class Register extends Component {
     const { handleSubmit } = this.props;
 
     return (
-      <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-      {this.renderAlert()}
-        <div className="row">
-          <div className="col-md-12">
-            <label>Username</label>
-            <Field name="username" className="form-control" component={renderField} type="text" />
-          </div>
+      <div className="container">
+        <div>
+          <Logo />
         </div>
-        <div className="row">
-          <div className="col-md-12">
-            <label>Password</label>
-            <Field name="password" className="form-control" component={renderField} type="password" />
+        <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+        {this.renderAlert()}
+          <div className="row">
+            <div className="col-md-12">
+              <label>Username</label>
+              <Field name="username" className="form-control" component={renderField} type="text" />
+            </div>
           </div>
-        </div>
-        <button type="submit" className="bttn">Register</button>
-        <Link to="/login" className="bttn">To Login </Link>
-      </form>
+          <div className="row">
+            <div className="col-md-12">
+              <label>Password</label>
+              <Field name="password" className="form-control" component={renderField} type="password" />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-12">
+              <label>Re-enter Password</label>
+              <Field name="doublechkpassword" className="form-control" component="input" type="password" />
+            </div>
+          </div>
+          <button type="submit" className="bttn">Register</button>
+          <Link to="/login" className="bttn">To Login </Link>
+        </form>
+      </div>
     );
   }
 }
