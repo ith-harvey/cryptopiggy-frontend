@@ -51,32 +51,28 @@ class Register extends Component {
 
     return (
       <div className="container">
-        <div>
+        <div className="logo-holder">
           <Logo />
         </div>
-        <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-        {this.renderAlert()}
-          <div className="row">
-            <div className="col-md-12">
+        <div className="col-xs-10 col-xs-offset-1">
+          <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+          {this.renderAlert()}
+            <div>
               <label>Username</label>
               <Field name="username" className="form-control" component={renderField} type="text" />
             </div>
-          </div>
-          <div className="row">
-            <div className="col-md-12">
+            <div>
               <label>Password</label>
               <Field name="password" className="form-control" component={renderField} type="password" />
             </div>
-          </div>
-          <div className="row">
-            <div className="col-md-12">
+            <div>
               <label>Re-enter Password</label>
               <Field name="doublechkpassword" className="form-control" component="input" type="password" />
             </div>
-          </div>
-          <button type="submit" className="bttn">Register</button>
-          <Link to="/login" className="bttn">To Login </Link>
-        </form>
+            <button type="submit" className="bttn pull-right">Register</button>
+            <Link to="/login" className="bttn pull-right">To Login</Link>
+          </form>
+        </div>
       </div>
     );
   }

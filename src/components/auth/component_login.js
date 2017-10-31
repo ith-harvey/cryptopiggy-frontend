@@ -31,23 +31,23 @@ class Login extends Component {
 
     return (
         <div className="container">
-          <div>
+          <div className="logo-holder">
             <Logo />
           </div>
           <div className="col-xs-10 col-xs-offset-1">
-          <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-          {this.renderAlert()}
-            <div>
-              <label>Username</label>
-              <Field name="username" className="form-control" component="input" type="text" />
-            </div>
-            <div>
-              <label>Password</label>
-              <Field name="password" className="form-control" component="input" type="password" />
-            </div>
-            <button type="submit" className="bttn">Login</button>
-            <Link to="/register" className="bttn">Register</Link>
-          </form>
+            <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+            {this.renderAlert()}
+              <div>
+                <label>Username</label>
+                <Field name="username" className="form-control" component="input" type="text" />
+              </div>
+              <div>
+                <label>Password</label>
+                <Field name="password" className="form-control" component="input" type="password" />
+              </div>
+              <button type="submit" className="bttn pull-right">Login</button>
+              <Link to="/register" className="bttn pull-right">Register</Link>
+            </form>
           </div>
         </div>
     );

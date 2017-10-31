@@ -37,7 +37,7 @@ ul li .bttn {
 .bttn {
   display: inline-block;
   padding: 6px 12px;
-  margin-bottom: 0;
+  margin: 5px 2px 0 2px;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.42857143;
@@ -77,6 +77,11 @@ ul li .bttn {
 .address {
   font-size: 1.5rem;
   color: lightgrey;
+}
+
+.logo-holder {
+  height: 150px;
+
 }
 
 .footer {
