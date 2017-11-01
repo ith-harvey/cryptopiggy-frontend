@@ -39,7 +39,7 @@ class Register extends Component {
   renderAlert() {
     if(this.props.errorMessage) {
       return (
-        <div>
+        <div className="alert alert-danger">
           <span><strong>Error!</strong> {this.props.errorMessage}</span>
         </div>
       );

@@ -26,24 +26,25 @@ export function errorHandler(dispatch, error, type) {
   if(error.status === 401) {
     dispatch({
       type: type,
-      payload: 'You are not authorized to do this. Please login and try again.'
+      payload: error.data.message
     });
     logoutUser();
   } else {
     dispatch({
       type: type,
-      payload: errorMessage
+      payload: error.data.message
     });
   }
 }
 
-export function loginUser({ username, password,  }, callback) {
+export function loginUser({ username, password}, callback) {
   return function(dispatch) {
     axios({
       method: 'post',
       url: `${ROOT_URL}/auth/signin`,
       data: { username, password }
     }).then(response => {
+      console.log('what we get back', response)
       dispatch({ type: AUTH_USER }); //setting state (Redux's Style)
       localStorage.setItem('jwtToken', response.data.token);
       callback()
