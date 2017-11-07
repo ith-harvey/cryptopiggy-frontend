@@ -104,6 +104,7 @@ export function addAddress({ address }, callback) {
     let token = localStorage.getItem('jwtToken')
     axios.post(`${ROOT_URL}/address`, { address, token })
     .then(response => {
+      console.log(response, 'responseing')
       callback() // runs fetchAddresses
     })
     .catch((error) => {
