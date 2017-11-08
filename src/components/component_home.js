@@ -1,18 +1,33 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Button} from 'react-bootstrap';
-import {logoutUser} from '../actions';
 import AddressForm from './component_addressForm';
-import AddressList from './component_addressList'
+import AddressList from './component_addressList';
+import PortfolioValue from './component_portfolioValue';
+
+import {logoutUser} from '../actions';
+import {performanceHistory} from '../actions/performance-history'
 
 
 class Home extends Component {
 
+  componentWillMount() {
+    console.log('in componentWill Mount')
+    this.props.performanceHistory()
+  }
+
+
   handleLogout() {
-    this.props.logoutUser(() => {
+    this.props.logoutUser( () => {
       this.props.history.push('/login')
     });
   }
+
+
+  handleGetPerformance() {
+
+  }
+
 
   render() {
     return (
@@ -42,8 +57,12 @@ class Home extends Component {
           </div>
           <div className="row footer">
             <div className="col-xs-10">
-              <p>Total Ether: {this.props.totalEth}</p>
-              <h4>Total in USD: ${this.props.totalUSD}</h4>
+              <PortfolioValue
+                totalEth={this.props.totalEth}
+                totalUsd={this.props.totalUSD}
+                getPerformance={this.handleGetPerformance.bind(this)}
+                performWindow={this.props.performWindow}
+              />
             </div>
           </div>
         </div>
@@ -60,4 +79,4 @@ function mapStateToProps(state) {
 
 }
 
-export default connect(mapStateToProps, {logoutUser})(Home)
+export default connect(mapStateToProps, {logoutUser, performanceHistory})(Home)
