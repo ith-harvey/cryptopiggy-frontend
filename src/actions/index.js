@@ -9,7 +9,9 @@ export const AUTH_USER = 'auth_user',
              RESET_PASSWORD_REQUEST = 'reset_password_request',
              PROTECTED_TEST = 'protected_test',
              ADDRESS_FETCHED = 'address_fetched',
-             ADDRESS_ERROR = 'address_error';
+             ADDRESS_ERROR = 'address_error',
+             PERFORM_HISTORY_FETCHED = 'perform_history_fetched',
+             PERFORM_HISTORY_ERROR = 'perform_history_error';
 
 const ROOT_URL = 'http://localhost:3000'
 

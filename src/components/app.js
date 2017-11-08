@@ -17,8 +17,6 @@ import RequireAuth from './auth/component_require_auth';
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 
 
-
-
 class App extends Component {
 
   render() {

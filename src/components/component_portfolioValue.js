@@ -6,30 +6,42 @@ class PortfolioValue extends Component {
     performWindowVal: 'nothing yet'
   }
 
+
+
   setWindow(e) {
+    let diff
+
+    let calcDiff = (curval, oldval) => curval - oldval
+    console.log('in switch', this.props.twoWeeksAgo)
     switch(e.target.getAttribute("value")) {
       case '.5':
-        if (this.props.twoWeeksAgo.valueBackThen)
-        this.setState({performWindowVal: this.props.twoWeeksAgo.valueBackThen})
-        else this.setState({performWindowVal: 'Not enough history'})
+        if (this.props.twoWeeksAgo.valueBackThen) {
+          diff = calcDiff(this.props.totalUsd,this.props.twoWeeksAgo.valueBackThen)
+        }
+        else diff = 'Not enough history'
       break;
 
       case '1':
-        if (this.props.oneMonthAgo.valueBackThen) this.setState({performWindowVal: this.props.oneMonthAgo.valueBackThen})
-        else this.setState({performWindowVal: 'Not enough history'})
+        if (this.props.oneMonthAgo.valueBackThen) {
+          diff = calcDiff(this.props.totalUsd,this.props.oneMonthAgo.valueBackThen)
+        }
+        else diff = 'Not enough history'
       break;
 
       case '6':
-      if (this.props.sixMonthsAgo.valueBackThen)
-        this.setState({performWindowVal: this.props.sixMonthsAgo.valueBackThen})
-        else this.setState({performWindowVal: 'Not enough history'})
+      if (this.props.sixMonthsAgo.valueBackThen) {
+        diff = calcDiff(this.props.totalUsd,this.props.sixMonthsAgo.valueBackThen)
+      }
+      else diff = 'Not enough history'
       break;
 
       default:
-      if (this.props.oneYearAgo.valueBackThen)
-      this.setState({performWindowVal: this.props.oneYearAgo.valueBackThen})
-      else this.setState({performWindowVal: 'Not enough history'})
+      if (this.props.oneYearAgo.valueBackThen) {
+        diff = calcDiff(this.props.totalUsd,this.props.oneYearAgo.valueBackThen)
+      }
+      else diff = 'Not enough history'
     }
+    this.setState({performWindowVal: diff })
   }
 
   render() {

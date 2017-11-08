@@ -1,5 +1,4 @@
-import { PERFORM_HISTORY_FETCHED,
-         PERFORM_HISTORY_ERROR } from '../actions';
+import { PERFORM_HISTORY_FETCHED, PERFORM_HISTORY_ERROR } from '../actions';
 
 const INITIAL_STATE = { error: '', message: '', oneMonthAgo: '', oneYearAgo: '', sixMonthsAgo: '', twoWeeksAgo: '',}
 
@@ -9,6 +8,7 @@ export default function (state = INITIAL_STATE, action) {
       return { ...state, error: action.payload };
 
     case PERFORM_HISTORY_FETCHED:
+        console.log('in action',action.payload.twoWeeksAgo)
         return { ...state,
           oneMonthAgo: action.payload.oneMonthAgo,
           oneYearAgo: action.payload.oneYearAgo,
