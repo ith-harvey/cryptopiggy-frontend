@@ -1,28 +1,39 @@
 import React, {Component} from 'react'
+import {DropdownButton, MenuItem} from 'react-bootstrap'
 
 class PortfolioValue extends Component {
+  state = {
+    performWindowVal: 'nothing yet'
+  }
 
-  setWindow(month) {
-    switch(month) {
+  setWindow(e) {
+    switch(e.target.getAttribute("value")) {
       case '.5':
-      //code
+        if (this.props.twoWeeksAgo.valueBackThen)
+        this.setState({performWindowVal: this.props.twoWeeksAgo.valueBackThen})
+        else this.setState({performWindowVal: 'Not enough history'})
       break;
 
       case '1':
-      //code
+        if (this.props.oneMonthAgo.valueBackThen) this.setState({performWindowVal: this.props.oneMonthAgo.valueBackThen})
+        else this.setState({performWindowVal: 'Not enough history'})
       break;
 
       case '6':
-      //code
+      if (this.props.sixMonthsAgo.valueBackThen)
+        this.setState({performWindowVal: this.props.sixMonthsAgo.valueBackThen})
+        else this.setState({performWindowVal: 'Not enough history'})
       break;
 
       default:
-      //code
+      if (this.props.oneYearAgo.valueBackThen)
+      this.setState({performWindowVal: this.props.oneYearAgo.valueBackThen})
+      else this.setState({performWindowVal: 'Not enough history'})
     }
-
   }
 
   render() {
+    let { performWindowVal } = this.state
     return (
       <div>
         <div className="row">
@@ -31,20 +42,15 @@ class PortfolioValue extends Component {
         </div>
         <div className="row">
           <div className="col-xs-8">
-            {/* <h4>${this.props.performWindow.Val}</h4> */}
+            {this.state.performWindowVal}
           </div>
           <div className="col-xs-4">
-          <div class="dropdown">
-            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              clicker
-            </button>
-            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a className="dropdown-item" onClick={this.setWindow.bind(this)} href="#">Two week view</a>
-              <a className="dropdown-item" onClick={this.setWindow.bind(this)} href="#">One month view</a>
-              <a className="dropdown-item" onClick={this.setWindow.bind(this)} href="#">Six month view</a>
-              <a className="dropdown-item" onClick={this.setWindow.bind(this)} href="#">One year view</a>
-            </div>
-          </div>
+            <DropdownButton title="Dropdown" id="bg-nested-dropdown">
+              <MenuItem value=".5" onClick={(e)=> this.setWindow(e)}>Two week view</MenuItem>
+              <MenuItem value="1" onClick={(e)=> this.setWindow(e)}>One month view</MenuItem>
+              <MenuItem value="6" onClick={(e)=> this.setWindow(e)}>Six month view</MenuItem>
+              <MenuItem value="12" onClick={(e)=> this.setWindow(e)}>One year view</MenuItem>
+            </DropdownButton>
         </div>
       </div>
     </div>

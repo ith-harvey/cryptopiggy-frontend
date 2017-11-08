@@ -11,7 +11,7 @@ export function allAddressesWithBalance() {
     let token = localStorage.getItem('jwtToken')
     axios.post(`${ROOT_URL}/address/balance/user`, { token })
     .then(response => {
-      console.log('response from serv', response)
+      console.log('addresses & balance response ->', response)
       dispatch({
         type: ADDRESS_FETCHED,
         payload: response.data

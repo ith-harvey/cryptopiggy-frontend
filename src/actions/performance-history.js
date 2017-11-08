@@ -6,22 +6,12 @@ const PERFORM_HISTORY_FETCHED = 'perform_history_fetched',
 
 const ROOT_URL = 'http://localhost:3000'
 
-function todaysDateTime() {
-  const today = new Date()
-  const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-  const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  const dateTime = date+' '+time;
-  return dateTime
-}
-
 export function performanceHistory () {
-  console.log('running!!!!!')
   return function(dispatch) {
-    let todaysDate = todaysDateTime()
     let token = localStorage.getItem('jwtToken')
-    axios.post(`${ROOT_URL}/portfolio/performhistory`, {token, todaysDate})
+    axios.post(`${ROOT_URL}/portfolio/performhistory`, {token})
     .then(response => {
-      console.log('response from serv /////', response)
+      console.log('performance window response ->', response)
       dispatch({
         type: PERFORM_HISTORY_FETCHED,
         payload: response.data

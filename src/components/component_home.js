@@ -61,7 +61,10 @@ class Home extends Component {
                 totalEth={this.props.totalEth}
                 totalUsd={this.props.totalUSD}
                 getPerformance={this.handleGetPerformance.bind(this)}
-                performWindow={this.props.performWindow}
+                twoWeeksAgo={this.props.twoWeeksAgo}
+                oneMonthAgo={this.props.oneMonthAgo}
+                sixMonthsAgo={this.props.sixMonthsAgo}
+                oneYearAgo={this.props.oneYearAgo}
               />
             </div>
           </div>
@@ -75,6 +78,10 @@ function mapStateToProps(state) {
   return {
     totalEth: state.address.totalCrypto,
     totalUSD: state.address.totalUSD,
+    oneMonthAgo: state.performanceHistory.oneMonthAgo,
+    oneYearAgo: state.performanceHistory.oneYearAgo,
+    sixMonthsAgo: state.performanceHistory.sixMonthsAgo,
+    twoWeeksAgo: state.performanceHistory.twoWeeksAgo
   }
 
 }
