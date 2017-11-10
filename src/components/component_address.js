@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Glyphicon } from 'react-bootstrap'
-import {Col, Row} from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 
 class Address extends Component {
 

@@ -22,5 +22,9 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     contentBase: './'
+  },
+  node: {
+    "child_process": "empty",
+    "fs": "empty"
   }
 };

@@ -8,12 +8,11 @@ export default function (state = INITIAL_STATE, action) {
       return { ...state, error: action.payload };
 
     case PERFORM_HISTORY_FETCHED:
-        console.log('in action',action.payload.twoWeeksAgo)
         return { ...state,
           oneMonthAgo: action.payload.oneMonthAgo,
           oneYearAgo: action.payload.oneYearAgo,
           sixMonthsAgo: action.payload.sixMonthsAgo,
-          twoWeeksAgo: action.payload.twoWeeksAgo  };
+          twoWeeksAgo: action.payload.twoWeeksAgo };
   }
 
   return state;

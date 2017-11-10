@@ -1,18 +1,17 @@
-import React, {Component} from 'react'
-import {DropdownButton, MenuItem} from 'react-bootstrap'
+import React, {Component} from 'react';
+import {DropdownButton, MenuItem} from 'react-bootstrap';
+import LineChart from './graph/component_lineChart';
 
 class PortfolioValue extends Component {
   state = {
     performWindowVal: 'nothing yet'
   }
 
-
-
   setWindow(e) {
     let diff
 
     let calcDiff = (curval, oldval) => curval - oldval
-    console.log('in switch', this.props.twoWeeksAgo)
+
     switch(e.target.getAttribute("value")) {
       case '.5':
         if (this.props.twoWeeksAgo.valueBackThen) {
@@ -63,9 +62,10 @@ class PortfolioValue extends Component {
               <MenuItem value="6" onClick={(e)=> this.setWindow(e)}>Six month view</MenuItem>
               <MenuItem value="12" onClick={(e)=> this.setWindow(e)}>One year view</MenuItem>
             </DropdownButton>
+          </div>
         </div>
+        <LineChart />
       </div>
-    </div>
     )
   }
 

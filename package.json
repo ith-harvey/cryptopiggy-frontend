@@ -28,9 +28,11 @@
   "dependencies": {
     "axios": "^0.16.2",
     "babel-preset-stage-1": "^6.1.18",
+    "d3": "^4.11.0",
     "lodash": "^3.10.1",
     "react": "^0.14.9",
     "react-bootstrap": "^0.31.3",
+    "react-d3-components": "^0.7.1",
     "react-dom": "^0.14.9",
     "react-redux": "^4.3.0",
     "react-router": "^2.8.1",

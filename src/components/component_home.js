@@ -30,8 +30,6 @@ class Home extends Component {
 
 
   render() {
-
-    console.log('in here???',this.props.twoWeeksAgo)
     return (
       <div>
         <div className="container">
