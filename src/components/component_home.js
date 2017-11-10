@@ -12,7 +12,6 @@ import {performanceHistory} from '../actions/performance-history'
 class Home extends Component {
 
   componentWillMount() {
-    console.log('in componentWill Mount')
     this.props.performanceHistory()
   }
 
@@ -21,11 +20,6 @@ class Home extends Component {
     this.props.logoutUser( () => {
       this.props.history.push('/login')
     });
-  }
-
-
-  handleGetPerformance() {
-
   }
 
 
@@ -60,7 +54,6 @@ class Home extends Component {
               <PortfolioValue
                 totalEth={this.props.totalEth}
                 totalUsd={this.props.totalUSD}
-                getPerformance={this.handleGetPerformance.bind(this)}
                 twoWeeksAgo={this.props.twoWeeksAgo}
                 oneMonthAgo={this.props.oneMonthAgo}
                 sixMonthsAgo={this.props.sixMonthsAgo}

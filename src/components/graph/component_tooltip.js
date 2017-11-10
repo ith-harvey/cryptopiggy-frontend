@@ -42,14 +42,14 @@ class ToolTip extends Component {
                    fill="#6391da" opacity=".9" visibility={visibility}/>
           <text is visibility={visibility} transform={transformText}>
               <tspan is x="0" text-anchor="middle" font-size="15px" fill="#ffffff">{this.props.tooltip.data.key}</tspan>
-              <tspan is x="0" text-anchor="middle" dy="25" font-size="20px" fill="#a9f3ff">{this.props.tooltip.data.value+" visits"}</tspan>
+              <tspan is x="0" text-anchor="middle" dy="25" font-size="20px" fill="#a9f3ff">{"$"+this.props.tooltip.data.value}</tspan>
           </text>
         </g>
       );
     }
 }
 
-ToolTip.propTypes: {
+ToolTip.propTypes = {
 
   tooltip:React.PropTypes.object
 

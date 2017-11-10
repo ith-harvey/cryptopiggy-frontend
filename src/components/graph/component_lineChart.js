@@ -2,21 +2,23 @@ import React, {Component} from 'react';
 import Dots from './component_chartDots'
 import Axis from './component_axis'
 import Grid from './component_grid'
+import ToolTip from './component_tooltip'
 import * as d3 from 'd3';
 
 class LineChart extends Component {
-
-  state = {
-    width: this.props.width,
-    tooltip: {
-      display: false,
-      data: {key: '', value: ''}
+  constructor(props) {
+    super(props)
+    this.state = {
+      width: this.props.width,
+      tooltip: {
+        display: false,
+        data: {key: '', value: ''}
+      }
     }
   }
 
   showToolTip(e) {
     e.target.setAttribute('fill', '#FFFFFF');
-
     this.setState({
       tooltip: {
         display: true,
@@ -36,45 +38,34 @@ class LineChart extends Component {
     e.target.setAttribute('fill', '#7dc7f4');
     this.setState({
       tooltip:{
-        display:false,
+        display: false,
         data: {key:'',value:''}
       }
     });
   }
 
   render() {
-
-      let data = [
-          {day:'02-11-2016',count:180},
-          {day:'02-12-2016',count:250},
-          {day:'02-13-2016',count:150},
-          {day:'02-14-2016',count:496},
-          {day:'02-15-2016',count:140},
-          {day:'02-16-2016',count:380},
-          {day:'02-17-2016',count:100},
-          {day:'02-18-2016',count:150}
-      ];
+    if (this.props.performanceData.length < 1) return <div />
 
       let margin = {top: 5, right: 50, bottom: 20, left: 50},
           w = this.state.width - (margin.left + margin.right),
           h = this.props.height - (margin.top + margin.bottom);
 
-      let parseDate = d3.timeParse("%m-%d-%Y");
+      let parseDate = d3.timeParse("%m/%d/%Y");
 
-      data.forEach(function (d) {
+      this.props.performanceData.forEach(function (d) {
         d.date = parseDate(d.day);
-        console.log('d.date', d.date)
       });
 
       let x = d3.scaleTime()
-          .domain(d3.extent(data, function (d) {
+          .domain(d3.extent(this.props.performanceData, function (d) {
               return d.date;
           }))
           .rangeRound([0, w]);
 
       let y = d3.scaleLinear()
-          .domain([0,d3.max(data,function(d){
-              return d.count+100;
+          .domain([0,d3.max(this.props.performanceData,function(d){
+              return d.value+100;
           })])
           .range([h, 0]);
 
@@ -83,26 +74,28 @@ class LineChart extends Component {
               return x(d.date);
           })
           .y(function (d) {
-              return y(d.count);
+              return y(d.value);
           }).curve(d3.curveCardinal)
 
-      let transform = 'translate(' + margin.left + ',' + margin.top + ')';
+      let transform = `translate(${margin.left}, ${margin.top})`;
 
       let yAxis = d3.axisLeft(y)
           .ticks(5);
 
       let xAxis = d3.axisBottom(x)
-          .tickValues(data.map(function(d,i) {
-             if( i > 0 )
-                 return d.date;
-          }))
-         .ticks(4);
+          .tickValues(this.props.performanceData.map(function(d,i) {
+            if( i > 0 ){
+              if(i % 3 === 0) return d.date;
+              else return ''
+             }
+          }).splice(1))
+         .tickFormat(d3.timeFormat("%m/%d"))
+         .ticks(5);
 
       let yGrid = d3.axisLeft(y)
           .ticks(5)
           .tickFormat("")
           .tickSize(-w, 0, 0);
-
 
       return (
         <div>
@@ -114,12 +107,14 @@ class LineChart extends Component {
               <Axis h={h} axis={yAxis} axisType="y" />
               <Axis h={h} axis={xAxis} axisType="x"/>
 
-              <path className="line" d={line(data)} strokeLinecap="round"/>
+              <path className="line" d={line(this.props.performanceData)} strokeLinecap="round"/>
 
-              <Dots data={data} x={x} y={y}
-                showToolTip={this.showToolTip}      hideToolTip={this.hideToolTip}
+              <Dots data={this.props.performanceData} x={x} y={y}
+                showToolTip={(e)=> this.showToolTip(e)}
+                hideToolTip={(e) => this.hideToolTip(e)}
               />
 
+              <ToolTip tooltip={this.state.tooltip}/>
             </g>
           </svg>
         </div>

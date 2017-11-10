@@ -4,47 +4,59 @@ import LineChart from './graph/component_lineChart';
 
 class PortfolioValue extends Component {
   state = {
-    performWindowVal: 'nothing yet'
+    performWindowVal: 'nothing yet',
+    performWindowData: []
   }
 
   setWindow(e) {
     let diff
+    let windowData
 
-    let calcDiff = (curval, oldval) => curval - oldval
-
+    let calcDiff = (curval, oldval) => {
+      let returnVal = (curval - oldval).toFixed(2)
+      if (returnVal >= 0) return `+$${returnVal}`
+      return `-$${returnVal}`
+    }
     switch(e.target.getAttribute("value")) {
       case '.5':
         if (this.props.twoWeeksAgo.valueBackThen) {
           diff = calcDiff(this.props.totalUsd,this.props.twoWeeksAgo.valueBackThen)
+          windowData = this.props.twoWeeksAgo.windowData.slice()
+        } else {
+          diff = 'Not enough history'
+          windowData = []
         }
-        else diff = 'Not enough history'
       break;
 
       case '1':
         if (this.props.oneMonthAgo.valueBackThen) {
           diff = calcDiff(this.props.totalUsd,this.props.oneMonthAgo.valueBackThen)
+          windowData = this.props.oneMonthAgo.windowData.slice()
         }
-        else diff = 'Not enough history'
+        else diff = 'Not enough history', windowData = []
       break;
 
       case '6':
       if (this.props.sixMonthsAgo.valueBackThen) {
         diff = calcDiff(this.props.totalUsd,this.props.sixMonthsAgo.valueBackThen)
+        windowData = this.props.sixMonthsAgo.windowData.slice()
       }
-      else diff = 'Not enough history'
+      else diff = 'Not enough history', windowData = []
       break;
 
       default:
       if (this.props.oneYearAgo.valueBackThen) {
         diff = calcDiff(this.props.totalUsd,this.props.oneYearAgo.valueBackThen)
+        windowData = this.props.oneYearAgo.windowData.slice()
       }
-      else diff = 'Not enough history'
+      else diff = 'Not enough history', windowData = []
     }
-    this.setState({performWindowVal: diff })
+
+    this.setState({performWindowVal: diff, performWindowData: windowData })
   }
 
   render() {
-    let { performWindowVal } = this.state
+    let { performWindowVal, performWindowData } = this.state
     return (
       <div>
         <div className="row">
@@ -64,7 +76,9 @@ class PortfolioValue extends Component {
             </DropdownButton>
           </div>
         </div>
-        <LineChart />
+        <LineChart
+          performanceData={this.state.performWindowData}
+         />
       </div>
     )
   }

@@ -7,15 +7,15 @@ class Dots extends Component {
       let _self = this;
 
       //remove last & first point
-      let data= this.props.data.splice(1);
-       data.pop();
+      let data = this.props.data.slice().splice(1);
+      data.pop();
 
       let circles = data.map(function( d, i ) {
         return (
-          <circle className="dot" r="7" cx={_self.props.x(d.date)} cy={_self.props.y(d.count)} fill="#7dc7f4"
+          <circle className="dot" r="7" cx={_self.props.x(d.date)} cy={_self.props.y(d.value)} fill="#7dc7f4"
           stroke="#3f5175" strokeWidth="5px" key={i}
           onMouseOver={_self.props.showToolTip} onMouseOut={_self.props.hideToolTip}
-          data-key={d3.timeParse("%b %e")(d.date)} data-value={d.count} />
+          data-key={d3.timeFormat("%m/%d/%Y")(d.date)} data-value={d.value} />
         );
       })
 
