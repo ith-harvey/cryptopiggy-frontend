@@ -12,7 +12,7 @@ class LineChart extends Component {
       width: this.props.width,
       tooltip: {
         display: false,
-        data: {key: '', value: ''}
+        data: {key: '', value: '', amount:''}
       }
     }
   }
@@ -24,7 +24,8 @@ class LineChart extends Component {
         display: true,
         data: {
             key: e.target.getAttribute('data-key'),
-            value: e.target.getAttribute('data-value')
+            value: e.target.getAttribute('data-value'),
+            amount: e.target.getAttribute('data-amount')
             },
         pos: {
             x: e.target.getAttribute('cx'),
@@ -39,7 +40,7 @@ class LineChart extends Component {
     this.setState({
       tooltip:{
         display: false,
-        data: {key:'',value:''}
+        data: {key:'',value:'', amount:''}
       }
     });
   }

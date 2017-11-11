@@ -7,11 +7,13 @@ import PortfolioValue from './component_portfolioValue';
 
 import {logoutUser} from '../actions';
 import {performanceHistory} from '../actions/performance-history'
+import {allAddressesWithBalance} from '../actions/etherscan'
 
 
 class Home extends Component {
 
   componentWillMount() {
+    this.props.allAddressesWithBalance()
     this.props.performanceHistory()
   }
 
@@ -24,6 +26,8 @@ class Home extends Component {
 
 
   render() {
+    if (!this.props.totalUSD) return <div>Loading animation.. </div>
+
     return (
       <div>
         <div className="container">
@@ -39,26 +43,27 @@ class Home extends Component {
               </div>
             </div>
           </nav>
-          <div className="row container-address">
-            <div className="col-xs-10">
-              <AddressList />
-            </div>
-          </div>
-          <div className="row container-adress-input">
-            <div className="col-xs-10">
-              <AddressForm />
-            </div>
+          <div className="col-xs-10">
+            <PortfolioValue
+              totalEth={this.props.totalEth}
+              totalUsd={this.props.totalUSD}
+              twoWeeksAgo={this.props.twoWeeksAgo}
+              oneMonthAgo={this.props.oneMonthAgo}
+              sixMonthsAgo={this.props.sixMonthsAgo}
+              oneYearAgo={this.props.oneYearAgo}
+              whenCreated={this.props.whenCreated}
+            />
           </div>
           <div className="row footer">
-            <div className="col-xs-10">
-              <PortfolioValue
-                totalEth={this.props.totalEth}
-                totalUsd={this.props.totalUSD}
-                twoWeeksAgo={this.props.twoWeeksAgo}
-                oneMonthAgo={this.props.oneMonthAgo}
-                sixMonthsAgo={this.props.sixMonthsAgo}
-                oneYearAgo={this.props.oneYearAgo}
-              />
+            <div className="row container-address">
+              <div className="col-xs-10">
+                <AddressList />
+              </div>
+            </div>
+            <div className="row container-address-input">
+              <div className="col-xs-10">
+                <AddressForm />
+              </div>
             </div>
           </div>
         </div>
@@ -74,9 +79,10 @@ function mapStateToProps(state) {
     oneMonthAgo: state.performanceHistory.oneMonthAgo,
     oneYearAgo: state.performanceHistory.oneYearAgo,
     sixMonthsAgo: state.performanceHistory.sixMonthsAgo,
-    twoWeeksAgo: state.performanceHistory.twoWeeksAgo
+    twoWeeksAgo: state.performanceHistory.twoWeeksAgo,
+    whenCreated: state.performanceHistory.whenCreated
   }
 
 }
 
-export default connect(mapStateToProps, {logoutUser, performanceHistory})(Home)
+export default connect(mapStateToProps, {logoutUser, performanceHistory, allAddressesWithBalance})(Home)

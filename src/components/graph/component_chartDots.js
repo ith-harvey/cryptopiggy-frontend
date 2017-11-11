@@ -15,7 +15,7 @@ class Dots extends Component {
           <circle className="dot" r="7" cx={_self.props.x(d.date)} cy={_self.props.y(d.value)} fill="#7dc7f4"
           stroke="#3f5175" strokeWidth="5px" key={i}
           onMouseOver={_self.props.showToolTip} onMouseOut={_self.props.hideToolTip}
-          data-key={d3.timeFormat("%m/%d/%Y")(d.date)} data-value={d.value} />
+          data-key={d3.timeFormat("%m/%d/%Y")(d.date)} data-amount={d.amount_eth} data-value={d.value} />
         );
       })
 

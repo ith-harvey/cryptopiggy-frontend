@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {DropdownButton, MenuItem} from 'react-bootstrap';
+import { DropdownButton, MenuItem } from 'react-bootstrap';
 import LineChart from './graph/component_lineChart';
 
 class PortfolioValue extends Component {
@@ -8,7 +8,13 @@ class PortfolioValue extends Component {
     performWindowData: []
   }
 
+  componentDidMount() {
+   this.setWindow() // empty argument -> hit default case (whenCreated)
+  }
+
   setWindow(e) {
+    let handleInput = e => e ? e.target.getAttribute("value") : 'whenCreated'
+
     let diff
     let windowData
 
@@ -17,7 +23,11 @@ class PortfolioValue extends Component {
       if (returnVal >= 0) return `+$${returnVal}`
       return `-$${returnVal}`
     }
-    switch(e.target.getAttribute("value")) {
+
+    console.log('running')
+
+
+    switch(handleInput(e)) {
       case '.5':
         if (this.props.twoWeeksAgo.valueBackThen) {
           diff = calcDiff(this.props.totalUsd,this.props.twoWeeksAgo.valueBackThen)
@@ -44,10 +54,19 @@ class PortfolioValue extends Component {
       else diff = 'Not enough history', windowData = []
       break;
 
-      default:
+      case '12':
       if (this.props.oneYearAgo.valueBackThen) {
         diff = calcDiff(this.props.totalUsd,this.props.oneYearAgo.valueBackThen)
         windowData = this.props.oneYearAgo.windowData.slice()
+      }
+      else diff = 'Not enough history', windowData = []
+      break;
+
+      default:
+      console.log('in default!', this.props.whenCreated.valueBackThen)
+      if (this.props.whenCreated.valueBackThen) {
+        diff = calcDiff(this.props.totalUsd,this.props.whenCreated.valueBackThen)
+        windowData = this.props.whenCreated.windowData.slice()
       }
       else diff = 'Not enough history', windowData = []
     }
@@ -56,6 +75,7 @@ class PortfolioValue extends Component {
   }
 
   render() {
+
     let { performWindowVal, performWindowData } = this.state
     return (
       <div>
@@ -68,7 +88,8 @@ class PortfolioValue extends Component {
             {this.state.performWindowVal}
           </div>
           <div className="col-xs-4">
-            <DropdownButton title="Dropdown" id="bg-nested-dropdown">
+            <DropdownButton title="dropdown" id="bg-nested-dropdown">
+              <MenuItem value="whenCreated" onClick={(e)=> this.setWindow(e)}>All time view</MenuItem>
               <MenuItem value=".5" onClick={(e)=> this.setWindow(e)}>Two week view</MenuItem>
               <MenuItem value="1" onClick={(e)=> this.setWindow(e)}>One month view</MenuItem>
               <MenuItem value="6" onClick={(e)=> this.setWindow(e)}>Six month view</MenuItem>

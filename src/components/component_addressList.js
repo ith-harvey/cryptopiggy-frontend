@@ -7,10 +7,6 @@ import {connect} from 'react-redux';
 
 
 class AddressList extends Component {
-  // map function
-  componentWillMount() {
-    this.props.allAddressesWithBalance()
-  }
 
   onDeleteAddress(id) {
     this.props.deleteAddress(id, () => {
