@@ -31,7 +31,7 @@ h1 {
 }
 
 ul li .bttn {
-  margin-left: 200px;
+  margin-left: 150px;
 }
 
 .bttn {
@@ -147,10 +147,4 @@ ul li .bttn {
 
 .bottom-right-svg{
     text-align: center;
-}
-
-
-.footer {
-  height: 60px;
-  margin-top: -60px;
 }

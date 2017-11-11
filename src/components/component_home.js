@@ -26,22 +26,18 @@ class Home extends Component {
 
 
   render() {
-    if (!this.props.totalUSD) return <div>Loading animation.. </div>
+    if (!this.props.totalUSD) return <div>Loading animation...</div>
 
     return (
       <div>
         <div className="container">
           <nav className="navbar navbar-cutom">
-            <div className="container-fluid">
-              <div className="navbar-header">
-                <h1 className="navbar-brand">Hello</h1>
-                <ul className="nav navbar-nav">
-                  <li>
-                    <button className="bttn" onClick={this.handleLogout.bind(this)} type="button">Logout</button>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <span className="navbar-brand">Hello</span>
+            <ul className="navbar-nav navbar-right">
+              <li className="nav-item">
+                <button className="bttn" onClick={this.handleLogout.bind(this)} type="button">Logout</button>
+              </li>
+            </ul>
           </nav>
           <div className="col-xs-10">
             <PortfolioValue
@@ -54,17 +50,11 @@ class Home extends Component {
               whenCreated={this.props.whenCreated}
             />
           </div>
-          <div className="row footer">
-            <div className="row container-address">
-              <div className="col-xs-10">
-                <AddressList />
-              </div>
-            </div>
-            <div className="row container-address-input">
-              <div className="col-xs-10">
-                <AddressForm />
-              </div>
-            </div>
+          <div className="col-xs-10">
+            <AddressList />
+          </div>
+          <div className="col-xs-10">
+            <AddressForm />
           </div>
         </div>
       </div>
