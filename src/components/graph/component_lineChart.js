@@ -52,7 +52,7 @@ class LineChart extends Component {
           w = this.state.width - (margin.left + margin.right),
           h = this.props.height - (margin.top + margin.bottom);
 
-      let parseDate = d3.timeParse("%m/%d/%Y");
+      let parseDate = d3.timeParse("%m/%d/%Y %H:%M:%S");
 
       this.props.performanceData.forEach(function (d) {
         d.date = parseDate(d.day);
@@ -84,12 +84,15 @@ class LineChart extends Component {
           .ticks(5);
 
       let xAxis = d3.axisBottom(x)
-          .tickValues(this.props.performanceData.map(function(d,i) {
-            if( i > 0 ){
+          .tickValues(
+            this.props.performanceData.map(function(d,i) {
+            if( i > 0 ) {
+              // return d.date; I WILL HAVE TO CHANGE THIS ONCE MY DATA IS UP AND RUNNING
               if(i % 3 === 0) return d.date;
               else return ''
              }
-          }).splice(1))
+          }).splice(1)
+          )
          .tickFormat(d3.timeFormat("%m/%d"))
          .ticks(5);
 

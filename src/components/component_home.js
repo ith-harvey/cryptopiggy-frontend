@@ -43,7 +43,8 @@ class Home extends Component {
             <PortfolioValue
               totalEth={this.props.totalEth}
               totalUsd={this.props.totalUSD}
-              twoWeeksAgo={this.props.twoWeeksAgo}
+              aDayAgo={this.props.aDayAgo}
+              oneWeekAgo={this.props.oneWeekAgo}
               oneMonthAgo={this.props.oneMonthAgo}
               sixMonthsAgo={this.props.sixMonthsAgo}
               oneYearAgo={this.props.oneYearAgo}
@@ -69,7 +70,8 @@ function mapStateToProps(state) {
     oneMonthAgo: state.performanceHistory.oneMonthAgo,
     oneYearAgo: state.performanceHistory.oneYearAgo,
     sixMonthsAgo: state.performanceHistory.sixMonthsAgo,
-    twoWeeksAgo: state.performanceHistory.twoWeeksAgo,
+    aDayAgo: state.performanceHistory.aDayAgo,
+    oneWeekAgo: state.performanceHistory.oneWeekAgo,
     whenCreated: state.performanceHistory.whenCreated
   }
 

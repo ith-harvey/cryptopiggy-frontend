@@ -34,10 +34,19 @@ ul li .bttn {
   margin-left: 150px;
 }
 
+.input-cust {
+  background-image: none;
+  background-color: none;
+  border: 1px solid white;
+  border-radius: 4px;
+  color: white;
+  background-color: transparent;
+}
+
 .bttn {
   display: inline-block;
   padding: 6px 12px;
-  margin: 5px 2px 0 2px;
+  margin: 0 2px 0 2px;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.42857143;
@@ -52,11 +61,22 @@ ul li .bttn {
   -ms-user-select: none;
   user-select: none;
   background-image: none;
-  background-color: none;
   border: 1px solid white;
   border-radius: 4px;
   color: white;
   background-color: transparent;
+}
+
+.bttn:hover {
+  background-color: white;
+  color: #2b5876;
+  color: -webkit-linear-gradient(to right, #4e4376, #2b5876);  /* Chrome 10-25, Safari 5.1-6 */
+  color: linear-gradient(to right, #4e4376, #2b5876);
+}
+
+ul .dropdown-menu, .dropdwn-menu {
+  background-color: black !important;
+  color: white !important;
 }
 
 .my-library-div {
@@ -70,7 +90,7 @@ ul li .bttn {
   justify-content: center;
 }
 
-.no-overflow{
+.no-overflow {
   overflow: hidden;
 }
 
@@ -134,10 +154,14 @@ ul li .bttn {
   padding:20px;
 }
 
-/*.browser-legend{
-    font-size:14px;
-    opacity:.8;
-}*/
+.logo-holder {
+  margin-top: 60px;
+  margin-bottom: 25px;
+}
+
+.logo-login {
+  margin-bottom: 15px;
+}
 
 .bottom-left-svg{
     padding-top:40px;

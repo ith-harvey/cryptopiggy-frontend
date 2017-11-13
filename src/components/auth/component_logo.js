@@ -4,10 +4,10 @@ import React, {Component} from 'react';
 
     render() {
       return (
-          <div className="row">
-            <div className="col-xs-7 col-xs-offset-3">
+          <div className="row login-holder">
+            <div className="col-xs-6 col-xs-offset-3 text-center">
+              <img className="logo-login" src="../../../style/images/Cryptopiggy_Logo_L.png" />
               <h1>Crypto Piggy</h1>
-              <p className="font-weight-light">enter in a public address<br/>get back a balance</p>
             </div>
           </div>
       )
