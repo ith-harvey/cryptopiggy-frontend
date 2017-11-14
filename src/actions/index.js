@@ -11,7 +11,8 @@ export const AUTH_USER = 'auth_user',
              ADDRESS_FETCHED = 'address_fetched',
              ADDRESS_ERROR = 'address_error',
              PERFORM_HISTORY_FETCHED = 'perform_history_fetched',
-             PERFORM_HISTORY_ERROR = 'perform_history_error';
+             PERFORM_HISTORY_ERROR = 'perform_history_error',
+             CLEAR_DATA = 'clear_data';
 
 const ROOT_URL = 'http://localhost:3000'
 
@@ -57,16 +58,17 @@ export function loginUser({ username, password}, callback) {
     }
 }
 
-export function registerUser({ username, password, doublechkpassword }) {
+export function registerUser({ username, password, doublechkpassword }, callback) {
   return function(dispatch) {
     if(password === doublechkpassword) {
       axios.post(`${ROOT_URL}/auth/signup`, { username, password })
       .then(response => {
-        dispatch({ type: AUTH_USER }); //setting state (Redux's Style)
         localStorage.setItem('jwtToken', response.data.token);
-        window.location.href = CLIENT_ROOT_URL;
+        dispatch({ type: AUTH_USER });
+        callback()
       })
       .catch((error) => {
+        console.log('error : ', error)
         errorHandler(dispatch, error.response, AUTH_ERROR)
       });
     } else {
@@ -78,7 +80,8 @@ export function registerUser({ username, password, doublechkpassword }) {
 
 export function logoutUser(callback) {
   return function (dispatch) {
-    dispatch({ type: UNAUTH_USER });
+    dispatch({ type: UNAUTH_USER })
+    dispatch({ type: CLEAR_DATA })
     localStorage.removeItem('jwtToken');
     callback()
   }
@@ -106,7 +109,7 @@ export function addAddress({ address }, callback) {
     let token = localStorage.getItem('jwtToken')
     axios.post(`${ROOT_URL}/address`, { address, token })
     .then(response => {
-      console.log(response, 'responseing')
+      console.log('response from add address', response)
       callback() // runs fetchAddresses
     })
     .catch((error) => {

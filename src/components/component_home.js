@@ -52,7 +52,9 @@ class Home extends Component {
             />
           </div>
           <div className="col-xs-10">
-            <AddressList />
+            <AddressList
+              addressesArr={this.props.addressesArr}
+            />
           </div>
           <div className="col-xs-10">
             <AddressForm />
@@ -72,7 +74,8 @@ function mapStateToProps(state) {
     sixMonthsAgo: state.performanceHistory.sixMonthsAgo,
     aDayAgo: state.performanceHistory.aDayAgo,
     oneWeekAgo: state.performanceHistory.oneWeekAgo,
-    whenCreated: state.performanceHistory.whenCreated
+    whenCreated: state.performanceHistory.whenCreated,
+    addressesArr: state.address.addressesArr
   }
 
 }

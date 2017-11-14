@@ -9,6 +9,7 @@ import reducers from '../reducers';
 import Home from './component_home'
 import Register from './auth/component_register'
 import Login from './auth/component_login'
+import AddAddress from './auth/component_login'
 import Mylibrary from './component_mylibrary'
 import NotFoundPage from './component_notfound'
 import RequireAuth from './auth/component_require_auth';
@@ -24,6 +25,7 @@ class App extends Component {
       <Provider store={createStoreWithMiddleware(reducers)}>
         <Switch>
           <Route path="/register" component={Register} />
+          <Route path="/register/addaddress" component={AddAddress}/>
           <Route path="/login" component={Login} />
           <Route path='/' component={RequireAuth(Home)}/>
           <Route path='/*' component={NotFoundPage}/>

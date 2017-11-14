@@ -1,4 +1,6 @@
-import { PERFORM_HISTORY_FETCHED, PERFORM_HISTORY_ERROR } from '../actions';
+import { PERFORM_HISTORY_FETCHED,
+         PERFORM_HISTORY_ERROR,
+         CLEAR_DATA } from '../actions';
 
 const INITIAL_STATE = { error: '', message: '', oneMonthAgo: '', oneYearAgo: '', sixMonthsAgo: '', oneWeekAgo: '', aDayAgo: '', whenCreated: ''}
 
@@ -16,6 +18,9 @@ export default function (state = INITIAL_STATE, action) {
           oneWeekAgo: action.payload.oneWeekAgo,
           aDayAgo: action.payload.aDayAgo
         };
+
+    case CLEAR_DATA:
+        return { ...state, error: '', message: '', oneMonthAgo: '', oneYearAgo: '', sixMonthsAgo: '', oneWeekAgo: '', aDayAgo: '', whenCreated: ''};
   }
 
   return state;

@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import Address from './component_address'
 import {fetchAddresses, deleteAddress} from '../actions'
-import {allAddressesWithBalance} from '../actions/etherscan'
 import {connect} from 'react-redux';
+import {allAddressesWithBalance} from '../actions/etherscan'
 
 
 
@@ -40,7 +40,6 @@ function mapStateToProps(state) {
   return {
     errorMessage: state.address.error,
     message: state.address.message,
-    addressesArr: state.address.addressesArr
   }
 }
 

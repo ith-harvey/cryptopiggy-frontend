@@ -3,7 +3,11 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { registerUser } from '../../actions';
 import { Link } from 'react-router-dom';
+
 import Logo from './component_logo';
+import AddressForm from '../component_addressForm';
+import AddressList from '../component_addressList';
+import { allAddressesWithBalance } from '../../actions/etherscan'
 
 const form = reduxForm({
   form: 'register',
@@ -32,8 +36,20 @@ function validate(formProps) {
 }
 
 class Register extends Component {
+  constructor() {
+    super()
+    this.state = { addressFormVisible: false }
+  }
+
+  componentWillMount() {
+    this.props.allAddressesWithBalance()
+  }
+
   handleFormSubmit(formProps) {
-    this.props.registerUser(formProps);
+    this.props.registerUser(formProps, () => {
+      this.setState({ addressFormVisible: true })
+      console.log('attempted to reset state')
+    });
   }
 
   renderAlert() {
@@ -55,23 +71,34 @@ class Register extends Component {
           <Logo />
         </div>
         <div className="col-xs-10 col-xs-offset-1">
-          <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-          {this.renderAlert()}
-            <div>
-              <label>Username</label>
-              <Field name="username" className="form-control" component={renderField} type="text" />
-            </div>
-            <div>
-              <label>Password</label>
-              <Field name="password" className="form-control" component={renderField} type="password" />
-            </div>
-            <div>
-              <label>Re-enter Password</label>
-              <Field name="doublechkpassword" className="form-control" component="input" type="password" />
-            </div>
-            <button type="submit" className="bttn pull-right">Register</button>
-            <Link to="/login" className="bttn pull-right">To Login</Link>
-          </form>
+          thing:{this.state.addressFormVisible}
+          {this.state.addressFormVisible
+            ? <div>
+                <AddressList
+                  addressesArr={this.props.addressesArr}
+                />
+                <AddressForm />
+                <Link to="/" className="bttn pull-right">To dashboard</Link>
+              </div>
+            : <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+                {this.renderAlert()}
+                <div>
+                  <label>Username</label>
+                  <Field name="username" className="form-control" component={renderField} type="text" />
+                </div>
+                <div>
+                  <label>Password</label>
+                  <Field name="password" className="form-control" component={renderField} type="password" />
+                </div>
+                <div>
+                  <label>Re-enter Password</label>
+                  <Field name="doublechkpassword" className="form-control" component="input" type="password" />
+                </div>
+                <button type="submit" className="bttn pull-right">Next</button>
+                <Link to="/login" className="bttn pull-right">To Login</Link>
+              </form>
+          }
+
         </div>
       </div>
     );
@@ -81,8 +108,9 @@ class Register extends Component {
 function mapStateToProps(state) {
   return {
     errorMessage: state.auth.error,
-    message: state.auth.message
+    message: state.auth.message,
+    addressesArr: state.address.addressesArr
   };
 }
 
-export default connect(mapStateToProps, { registerUser })(form(Register));
+export default connect(mapStateToProps, { registerUser, allAddressesWithBalance})(form(Register));
