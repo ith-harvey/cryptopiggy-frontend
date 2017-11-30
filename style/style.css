@@ -74,9 +74,22 @@ ul li .bttn {
   color: linear-gradient(to right, #4e4376, #2b5876);
 }
 
-ul .dropdown-menu, .dropdwn-menu {
-  background-color: black !important;
+.dropdown-menu {
+  width: 140px !important;
+  min-width: 130px !important;
+}
+
+.dropdown-menu, .dropdwn-menu, .dropdwn-menu a {
+  background-color: #283c63 !important;
   color: white !important;
+}
+
+.dropdwn-menu {
+  opacity: .8;
+}
+
+.dropdwn-menu:hover {
+  opacity:1;
 }
 
 .my-library-div {
@@ -108,7 +121,6 @@ ul .dropdown-menu, .dropdwn-menu {
     stroke: white;
     stroke-width: 1px;
 }
-
 
 .y-grid line {
   stroke: lightgrey;

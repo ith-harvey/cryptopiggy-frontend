@@ -23,7 +23,7 @@ class AddressList extends Component {
           amountEth={address.amount_in_wallet}
           amountUsd={address.amount_in_usd}
           deleteAddress={() => this.onDeleteAddress(address.id)}
-          key={ address.id} >
+          key={ address.id } >
         </Address>
       )
     })

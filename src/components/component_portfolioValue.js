@@ -15,11 +15,6 @@ class PortfolioValue extends Component {
 
   setWindow(e) {
 
-    if(e.target.getAttribute("disabled")) return
-
-    console.log('attribute', e.target.getAttribute("disabled"))
-    console.log('attribute e', e.target)
-
     let handleInput = e => e ? e.target.getAttribute("value") : 'whenCreated'
 
     let diff, windowData, percentDiff
@@ -135,7 +130,7 @@ class PortfolioValue extends Component {
               <MenuItem className="dropdwn-menu" value=".25" onClick={(e)=> this.setWindow(e)}>One week view</MenuItem>
               <MenuItem className="dropdwn-menu" value="1" onClick={(e)=> this.setWindow(e)}>One month view</MenuItem>
               <MenuItem className="dropdwn-menu" value="6" onClick={(e)=> this.setWindow(e)}>Six month view</MenuItem>
-              <MenuItem disabled={true} className="dropdwn-menu" value="12" onClick={(e)=> this.setWindow(e)}>One year view</MenuItem>
+              <MenuItem className="dropdwn-menu" value="12" onClick={(e)=> this.setWindow(e)}>One year view</MenuItem>
             </DropdownButton>
           </div>
         </div>
