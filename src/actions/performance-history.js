@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router';
 const PERFORM_HISTORY_FETCHED = 'perform_history_fetched',
       PERFORM_HISTORY_ERROR = 'perform_history_error';
 
-const ROOT_URL = 'http://localhost:3000'
+const ROOT_URL = 'http://13.56.11.169'
 
 export function performanceHistory () {
   return function(dispatch) {
