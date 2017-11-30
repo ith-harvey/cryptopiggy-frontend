@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 import LineChart from './graph/component_lineChart';
+import LineSeparator from './component_lineSeparator';
 
 class PortfolioValue extends Component {
   state = {
@@ -109,9 +110,22 @@ class PortfolioValue extends Component {
     return (
       <div>
         <div className="row">
-          <p>Total Ether: {this.props.totalEth}</p>
-          <h4>Total in USD: ${this.props.totalUsd}</h4>
+          <div className="text-right vertical-center">
+            <div className="horizontal-center">
+              <h1 className="title-total-val">
+                ${this.props.totalUsd}
+                {/* <span className="tiny-label"></span> */}
+              </h1>
+              <h4>
+                {this.props.totalEth}
+                <span className="tiny-label">Eth</span>
+              </h4>
+            </div>
+          </div>
         </div>
+        <LineSeparator
+          separatorTitle='Time window'
+        />
         <div className="row">
           <div className="col-xs-8">
             <div className="row">

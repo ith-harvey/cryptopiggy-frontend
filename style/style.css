@@ -3,6 +3,8 @@ html {
 }
 
 body {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
@@ -13,6 +15,24 @@ body {
   background: -webkit-linear-gradient(to right, #4e4376, #2b5876);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #4e4376, #2b5876); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+
+/*UTILITIES*/
+.vertical-center {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.horizontal-center {
+  margin: 0 auto;
+}
+
+.vertical-center-contain {
+  display: flex;
+  justify-content: center;
+}
+
+
 
 .holder {
   margin: 0;
@@ -25,13 +45,30 @@ body {
   background-color: transparent;
 }
 
+.title-total-val {
+  font-weight: 100;
+  font-size: 60px;
+  /*color: #bcedc4;*/
+  text-decoration: none;
+}
+
+
 h1 {
   font-size: 20px;
   margin: 0;
 }
 
+h4 {
+  font-weight: 100;
+}
+
 ul li .bttn {
   margin-left: 150px;
+}
+
+.separator-line {
+  border-bottom: 1px solid lightgrey;
+  height: 1px;
 }
 
 .input-cust {
@@ -44,6 +81,7 @@ ul li .bttn {
 }
 
 .bttn {
+  font-family: inherit;
   display: inline-block;
   padding: 6px 12px;
   margin: 0 2px 0 2px;
@@ -74,6 +112,7 @@ ul li .bttn {
   color: linear-gradient(to right, #4e4376, #2b5876);
 }
 
+/*DROP DOWN MENU*/
 .dropdown-menu {
   width: 140px !important;
   min-width: 130px !important;
@@ -92,22 +131,26 @@ ul li .bttn {
   opacity:1;
 }
 
+
 .my-library-div {
   width: 50%;
   height: 100%;
   background-color: #abe7f3;
 }
 
-.vertical-center-contain {
-  display: flex;
-  justify-content: center;
-}
+
 
 .no-overflow {
   overflow: hidden;
 }
 
-.address {
+.address{
+  font-size: 1.5rem;
+  color: lightgrey;
+}
+
+.tiny-label {
+  margin-left: 5px;
   font-size: 1.5rem;
   color: lightgrey;
 }

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Button} from 'react-bootstrap';
+import {Button, Glyphicon, Dropdown, MenuItem} from 'react-bootstrap';
 import AddressForm from './component_addressForm';
 import AddressList from './component_addressList';
 import PortfolioValue from './component_portfolioValue';
@@ -32,14 +32,22 @@ class Home extends Component {
       <div>
         <div className="container">
           <nav className="navbar navbar-cutom">
-            <span className="navbar-brand">Hello</span>
+            <span className="navbar-brand">Crypto Piggy</span>
             <ul className="navbar-nav navbar-right">
               <li className="nav-item">
-                <button className="bttn" onClick={this.handleLogout.bind(this)} type="button">Logout</button>
+                <Dropdown id="bg-nested-dropdown">
+                  <Dropdown.Toggle className="bttn">
+                    <Glyphicon glyph="cog"></Glyphicon>
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <MenuItem className="dropdwn-menu" onClick={this.handleLogout.bind(this)}>Logout</MenuItem>
+                    <MenuItem className="dropdwn-menu" onClick={this.handleLogout.bind(this)}>Modify addresses</MenuItem>
+                  </Dropdown.Menu>
+              </Dropdown>
               </li>
             </ul>
           </nav>
-          <div className="col-xs-10">
+          <div className="col-xs-12">
             <PortfolioValue
               totalEth={this.props.totalEth}
               totalUsd={this.props.totalUSD}
@@ -51,12 +59,12 @@ class Home extends Component {
               whenCreated={this.props.whenCreated}
             />
           </div>
-          <div className="col-xs-10">
+          <div className="col-xs-12">
             <AddressList
               addressesArr={this.props.addressesArr}
             />
           </div>
-          <div className="col-xs-10">
+          <div className="col-xs-12">
             <AddressForm />
           </div>
         </div>
