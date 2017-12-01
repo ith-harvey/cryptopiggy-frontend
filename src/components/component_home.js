@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Button, Glyphicon, Dropdown, MenuItem} from 'react-bootstrap';
-import AddressForm from './component_addressForm';
 import AddressList from './component_addressList';
 import PortfolioValue from './component_portfolioValue';
 
@@ -63,9 +62,6 @@ class Home extends Component {
             <AddressList
               addressesArr={this.props.addressesArr}
             />
-          </div>
-          <div className="col-xs-12">
-            <AddressForm />
           </div>
         </div>
       </div>

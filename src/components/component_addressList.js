@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Address from './component_address'
+import AddressForm from './component_addressForm';
 import {fetchAddresses, deleteAddress} from '../actions'
 import {connect} from 'react-redux';
 import {allAddressesWithBalance} from '../actions/etherscan'
@@ -30,7 +31,12 @@ class AddressList extends Component {
 
     return (
       <div>
-        { addressNodes }
+        <div>
+          { addressNodes }
+        </div>
+        <div>
+          <AddressForm />
+        </div>
       </div>
     )
   }

@@ -67,39 +67,36 @@ class Register extends Component {
 
     return (
       <div className="container">
-        <div className="logo-holder">
-          <Logo />
-        </div>
-        <div className="col-xs-10 col-xs-offset-1">
-          thing:{this.state.addressFormVisible}
-          {this.state.addressFormVisible
-            ? <div>
+        {this.state.addressFormVisible ?
+              <div className="col-xs-10 col-xs-offset-1">
                 <AddressList
                   addressesArr={this.props.addressesArr}
                 />
-                <AddressForm />
                 <Link to="/" className="bttn pull-right">To dashboard</Link>
               </div>
-            : <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-                {this.renderAlert()}
-                <div>
-                  <label>Username</label>
-                  <Field name="username" className="form-control" component={renderField} type="text" />
-                </div>
-                <div>
-                  <label>Password</label>
-                  <Field name="password" className="form-control" component={renderField} type="password" />
-                </div>
-                <div>
-                  <label>Re-enter Password</label>
-                  <Field name="doublechkpassword" className="form-control" component="input" type="password" />
-                </div>
-                <button type="submit" className="bttn pull-right">Next</button>
-                <Link to="/login" className="bttn pull-right">To Login</Link>
-              </form>
-          }
-
-        </div>
+          : <div className="col-xs-10 col-xs-offset-1">
+              <div className="logo-holder">
+                <Logo />
+              </div>
+              <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+                  {this.renderAlert()}
+                  <div>
+                    <label>Username</label>
+                    <Field name="username" className="form-control" component={renderField} type="text" />
+                  </div>
+                  <div>
+                    <label>Password</label>
+                    <Field name="password" className="form-control" component={renderField} type="password" />
+                  </div>
+                  <div>
+                    <label>Re-enter Password</label>
+                    <Field name="doublechkpassword" className="form-control" component="input" type="password" />
+                  </div>
+                  <button type="submit" className="bttn pull-right">Next</button>
+                  <Link to="/login" className="bttn pull-right">To Login</Link>
+                </form>
+            </div>
+        }
       </div>
     );
   }
