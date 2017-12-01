@@ -32,7 +32,13 @@ body {
   justify-content: center;
 }
 
+.green {
+  color: #bcedc4;
+}
 
+.red{
+  color: #e46d93;
+}
 
 .holder {
   margin: 0;
@@ -113,6 +119,10 @@ ul li .bttn {
 }
 
 /*DROP DOWN MENU*/
+.dropdown {
+  margin-left: -10px !important;
+}
+
 .dropdown-menu {
   width: 140px !important;
   min-width: 130px !important;
@@ -131,6 +141,13 @@ ul li .bttn {
   opacity:1;
 }
 
+.dropdwn-window-button {
+  /*border: none;*/
+}
+
+.heading-time-window {
+  margin-bottom: 0px;
+}
 
 .my-library-div {
   width: 50%;
@@ -149,9 +166,12 @@ ul li .bttn {
   color: lightgrey;
 }
 
-.tiny-label {
+.tiny-label, .tiny-label-colorless {
   margin-left: 5px;
   font-size: 1.5rem;
+}
+
+.tiny-label {
   color: lightgrey;
 }
 

@@ -85,7 +85,6 @@ function mapStateToProps(state) {
     whenCreated: state.performanceHistory.whenCreated,
     addressesArr: state.address.addressesArr
   }
-
 }
 
 export default connect(mapStateToProps, {logoutUser, performanceHistory, allAddressesWithBalance})(Home)
