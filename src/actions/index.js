@@ -15,6 +15,7 @@ export const AUTH_USER = 'auth_user',
              CLEAR_DATA = 'clear_data';
 
 const ROOT_URL = 'http://localhost:3000'
+// const ROOT_URL = 'http://13.56.11.169'
 
 export function errorHandler(dispatch, error, type) {
   let errorMessage = '';

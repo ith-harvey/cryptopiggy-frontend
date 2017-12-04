@@ -5,6 +5,7 @@ import { browserHistory } from 'react-router';
 const ADDRESS_FETCHED = 'address_fetched'
 
 const ROOT_URL = 'http://localhost:3000'
+// const ROOT_URL = 'http://13.56.11.169'
 
 export function allAddressesWithBalance() {
   return function(dispatch) {

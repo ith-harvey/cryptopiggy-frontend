@@ -36,7 +36,7 @@ class AddressPage extends Component {
           </div>
           <div className="col-xs-11">
 
-            <Link to={this.props.location.query.fromPath} className="bttn pull-right">Back to {this.props.location.query.fromName}</Link>
+            <Link to={this.props.location.query.fromPath} className="bttn pull-right">{this.props.location.query.fromName}</Link>
 
             <AddressList
               addressesArr={this.props.addressesArr}

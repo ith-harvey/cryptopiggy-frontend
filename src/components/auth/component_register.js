@@ -22,7 +22,6 @@ const renderField = field => (
 
 function validate(formProps) {
   const errors = {};
-
   if (!formProps.email) {
     errors.email = 'Please enter an email';
   }
@@ -46,8 +45,13 @@ class Register extends Component {
 
   handleFormSubmit(formProps) {
     this.props.registerUser(formProps, () => {
-      this.setState({ addressFormVisible: true })
-      console.log('attempted to reset state')
+      this.props.history.push({
+       pathname: '/addresses',
+       query: {
+         fromPath: '/home',
+         fromName: 'To dashboard'
+       }
+      })
     });
   }
 
@@ -66,36 +70,31 @@ class Register extends Component {
 
     return (
       <div className="container">
-        {this.state.addressFormVisible ?
-              <div className="col-xs-10 col-xs-offset-1">
-                <AddressList
-                  addressesArr={this.props.addressesArr}
-                />
-                <Link to="/" className="bttn pull-right">To dashboard</Link>
-              </div>
-          : <div className="col-xs-10 col-xs-offset-1">
-              <div className="logo-holder">
-                <Logo />
-              </div>
-              <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-                  {this.renderAlert()}
-                  <div>
-                    <label>Username</label>
-                    <Field name="username" className="form-control" component={renderField} type="text" />
-                  </div>
-                  <div>
-                    <label>Password</label>
-                    <Field name="password" className="form-control" component={renderField} type="password" />
-                  </div>
-                  <div>
-                    <label>Re-enter Password</label>
-                    <Field name="doublechkpassword" className="form-control" component="input" type="password" />
-                  </div>
-                  <button type="submit" className="bttn pull-right">Next</button>
-                  <Link to="/login" className="bttn pull-right">To Login</Link>
-                </form>
+        <div className="col-xs-10 col-xs-offset-1">
+          <div className="logo-holder">
+            <Logo
+              loginImg='../../../style/images/Cryptopiggy_Logo_L.png'
+              imgClass='logo-login'
+             />
+          </div>
+          <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+            {this.renderAlert()}
+            <div>
+              <label>Username</label>
+              <Field name="username" className="form-control input-cust" component={renderField} type="text" />
             </div>
-        }
+            <div>
+              <label>Password</label>
+              <Field name="password" className="form-control input-cust" component={renderField} type="password" />
+            </div>
+            <div>
+              <label>Re-enter Password</label>
+              <Field name="doublechkpassword" className="form-control input-cust" component="input" type="password" />
+            </div>
+            <button type="submit" className="bttn pull-right">Next</button>
+            <Link to="/login" className="bttn pull-right">To Login</Link>
+          </form>
+        </div>
       </div>
     );
   }

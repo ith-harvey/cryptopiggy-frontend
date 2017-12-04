@@ -26,7 +26,6 @@ class App extends Component {
       <Provider store={createStoreWithMiddleware(reducers)}>
         <Switch>
           <Route path="/register" component={Register} />
-          <Route path="/register/addaddress" component={AddAddress}/>
           <Route path="/login" component={Login} />
           <Route path="/addresses" component={AddressPage} />
           <Route path='/' component={RequireAuth(Home)} />
