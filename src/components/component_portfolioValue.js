@@ -129,33 +129,38 @@ class PortfolioValue extends Component {
             </div>
           </div>
         </div>
-        <LineSeparator
-          separatorTitle='Time window'
-        />
-          <div className="row vertical-center">
-            <div className={"col-xs-4 text-center " + modifytxt.color}>
-              <h4 className="heading-time-window">{this.state.performWindowVal}</h4>
-              <span className={"tiny-label-colorless " + modifytxt.color}>
-                {modifytxt.mssg}
-              </span>
-            </div>
-            <div className={"col-xs-4 text-center " + modifytxt.color}>
-              <h4 className="heading-time-window">{this.state.performPercent}</h4>
-              <span className={"tiny-label-colorless " + modifytxt.color}>
-                {modifytxt.mssg}
-              </span>
-            </div>
-            <div className="col-xs-4 text-center">
-              <DropdownButton className="bttn dropdwn-window-button" title="dropdown" id="bg-nested-dropdown">
-                <MenuItem value="whenCreated" className="dropdwn-menu" onClick={(e)=> this.setWindow(e)}>All time view</MenuItem>
-                <MenuItem className="dropdwn-menu" value="24h" onClick={(e)=> this.setWindow(e)}>One day view</MenuItem>
-                <MenuItem className="dropdwn-menu" value=".25" onClick={(e)=> this.setWindow(e)}>One week view</MenuItem>
-                <MenuItem className="dropdwn-menu" value="1" onClick={(e)=> this.setWindow(e)}>One month view</MenuItem>
-                <MenuItem className="dropdwn-menu" value="6" onClick={(e)=> this.setWindow(e)}>Six month view</MenuItem>
-                <MenuItem className="dropdwn-menu" value="12" onClick={(e)=> this.setWindow(e)}>One year view</MenuItem>
-              </DropdownButton>
-            </div>
+        <div className="row vertical-center">
+          <LineSeparator
+            separatorClass='col-xs-4'
+          />
+          <div className="col-xs-4">
+          <DropdownButton className="bttn dropdwn-window-button" title="dropdown" id="bg-nested-dropdown">
+            <MenuItem value="whenCreated" className="dropdwn-menu" onClick={(e)=> this.setWindow(e)}>All time view</MenuItem>
+            <MenuItem className="dropdwn-menu" value="24h" onClick={(e)=> this.setWindow(e)}>One day view</MenuItem>
+            <MenuItem className="dropdwn-menu" value=".25" onClick={(e)=> this.setWindow(e)}>One week view</MenuItem>
+            <MenuItem className="dropdwn-menu" value="1" onClick={(e)=> this.setWindow(e)}>One month view</MenuItem>
+            <MenuItem className="dropdwn-menu" value="6" onClick={(e)=> this.setWindow(e)}>Six month view</MenuItem>
+            <MenuItem className="dropdwn-menu" value="12" onClick={(e)=> this.setWindow(e)}>One year view</MenuItem>
+          </DropdownButton>
           </div>
+          <LineSeparator
+            separatorClass='col-xs-4'
+          />
+        </div>
+        <div className="row vertical-center">
+          <div className={"col-xs-6 text-center " + modifytxt.color}>
+            <h3 className="heading-time-window">${this.state.performWindowVal}</h3>
+            <span className={"tiny-label-colorless " + modifytxt.color}>
+              {modifytxt.mssg}
+            </span>
+          </div>
+          <div className={"col-xs-6 text-center " + modifytxt.color}>
+            <h3 className="heading-time-window">{this.state.performPercent}</h3>
+            <span className={"tiny-label-colorless " + modifytxt.color}>
+              {modifytxt.mssg}
+            </span>
+          </div>
+        </div>
         <LineChart
           performanceData={this.state.performWindowData}
          />
