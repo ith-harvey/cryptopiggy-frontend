@@ -23,7 +23,6 @@ class PortfolioValue extends Component {
 
     let calcDiff = (curval, oldval) => {
       let returnval = (curval - oldval).toFixed(2)
-      console.log('type of', typeof returnval)
       return returnval
     }
 
@@ -44,6 +43,8 @@ class PortfolioValue extends Component {
         if (this.props.aDayAgo.valueBackThen) {
           diff = calcDiff(this.props.totalUsd,this.props.aDayAgo.valueBackThen)
           windowData = this.props.aDayAgo.windowData.slice()
+
+          percentDiff = calcPercentDiff(this.props.totalUsd, this.props.aDayAgo.valueBackThen)
         } else {
           diff = 'Not enough history', percentDiff = 'can\'t calculate', windowData = []
         }
@@ -97,7 +98,7 @@ class PortfolioValue extends Component {
 
       default:
       if (this.props.whenCreated.valueBackThen) {
-        diff = calcDiff(this.props.totalUsd,this.props.whenCreated.valueBackThen)
+        diff = calcDiff(this.props.totalUsd, this.props.whenCreated.valueBackThen)
         windowData = this.props.whenCreated.windowData.slice()
 
         percentDiff = calcPercentDiff(this.props.totalUsd, this.props.whenCreated.valueBackThen)
