@@ -278,3 +278,8 @@ ul li .bttn {
 .aligner-item-bottom {
   align-self: flex-end;
 }
+
+svg {
+  display: block;
+  margin: 0 0 40px -25px;
+}

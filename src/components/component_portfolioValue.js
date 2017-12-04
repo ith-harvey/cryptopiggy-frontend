@@ -168,9 +168,9 @@ class PortfolioValue extends Component {
             </span>
           </div>
         </div>
-        <LineChart
-          performanceData={this.state.performWindowData}
-         />
+          <LineChart
+            performanceData={this.state.performWindowData}
+          />
       </div>
     )
   }

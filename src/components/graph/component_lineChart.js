@@ -102,8 +102,7 @@ class LineChart extends Component {
           .tickSize(-w, 0, 0);
 
       return (
-        <div>
-          <svg id={this.props.chartId} width={this.state.width} height={this.props.height}>
+          <svg id={this.props.chartId} width={this.state.width} height={this.props.height} className="col-xs-12">
             <g transform={transform}>
 
               <Grid h={h} grid={yGrid} gridType="y"/>
@@ -121,14 +120,13 @@ class LineChart extends Component {
               <ToolTip tooltip={this.state.tooltip}/>
             </g>
           </svg>
-        </div>
       )
   }
 }
 
 LineChart.defaultProps = {
-  width: 350,
-  height: 230,
+  width: 340,
+  height: 235,
   chartId: 'v1_chart'
 }
 
