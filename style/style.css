@@ -20,7 +20,6 @@ body {
 .vertical-center {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
 }
 
 .horizontal-center {
@@ -96,7 +95,7 @@ ul li .bttn {
   line-height: 1.42857143;
   text-align: center;
   white-space: nowrap;
-  vertical-align: middle;
+ al-align: middle;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
   cursor: pointer;
@@ -142,7 +141,7 @@ ul li .bttn {
 }
 
 .dropdwn-window-button {
-  /*border: none;*/
+  border: none;
 }
 
 .heading-time-window {

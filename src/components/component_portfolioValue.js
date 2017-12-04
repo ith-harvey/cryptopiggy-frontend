@@ -7,7 +7,8 @@ class PortfolioValue extends Component {
   state = {
     performWindowVal: 'nothing yet',
     performWindowData: [],
-    performPercent: 'can\'t calculate'
+    performPercent: 'can\'t calculate',
+    title: "All time view"
   }
 
   componentDidMount() {
@@ -47,6 +48,7 @@ class PortfolioValue extends Component {
         } else {
           diff = 'Not enough history', percentDiff = 'can\'t calculate', windowData = []
         }
+        this.setState({title: "One day view"})
       break;
 
       case '.25':
@@ -58,6 +60,7 @@ class PortfolioValue extends Component {
         } else {
           diff = 'Not enough history', percentDiff = 'can\'t calculate', windowData = []
         }
+        this.setState({title: "One week view"})
       break;
 
       case '1':
@@ -68,6 +71,7 @@ class PortfolioValue extends Component {
           percentDiff = calcPercentDiff(this.props.totalUsd, this.props.oneMonthAgo.valueBackThen)
         }
         else diff = 'Not enough history', windowData = [], percentDiff = 'can\'t calculate'
+        this.setState({title: "One month view"})
       break;
 
       case '6':
@@ -78,6 +82,7 @@ class PortfolioValue extends Component {
         percentDiff = calcPercentDiff(this.props.totalUsd, this.props.sixMonthsAgo.valueBackThen)
       }
       else diff = 'Not enough history', windowData = [], percentDiff = 'can\'t calculate'
+      this.setState({title: "Six month view"})
       break;
 
       case '12':
@@ -88,6 +93,7 @@ class PortfolioValue extends Component {
         percentDiff = calcPercentDiff(this.props.totalUsd, this.props.oneYearAgo.valueBackThen)
       }
       else diff = 'Not enough history', windowData = [], percentDiff = 'can\'t calculate'
+      this.setState({title: "One year view"})
       break;
 
       default:
@@ -98,6 +104,7 @@ class PortfolioValue extends Component {
         percentDiff = calcPercentDiff(this.props.totalUsd, this.props.whenCreated.valueBackThen)
       }
       else diff = 'Not enough history', windowData = [], percentDiff = 'can\'t calculate'
+      this.setState({title: "All time view"})
     }
     this.setState({performWindowVal: diff, performWindowData: windowData, performPercent: percentDiff})
   }
@@ -134,7 +141,7 @@ class PortfolioValue extends Component {
             separatorClass='col-xs-4'
           />
           <div className="col-xs-4">
-          <DropdownButton className="bttn dropdwn-window-button" title="dropdown" id="bg-nested-dropdown">
+          <DropdownButton className="bttn dropdwn-window-button" title={this.state.title} id="bg-nested-dropdown">
             <MenuItem value="whenCreated" className="dropdwn-menu" onClick={(e)=> this.setWindow(e)}>All time view</MenuItem>
             <MenuItem className="dropdwn-menu" value="24h" onClick={(e)=> this.setWindow(e)}>One day view</MenuItem>
             <MenuItem className="dropdwn-menu" value=".25" onClick={(e)=> this.setWindow(e)}>One week view</MenuItem>
