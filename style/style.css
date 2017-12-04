@@ -176,7 +176,8 @@ ul li .bttn {
 }
 
 .logo-holder {
-  height: 150px;
+  height: 200px;
+  margin: 50px 0 10px 0;
 }
 
 .line {
@@ -229,13 +230,13 @@ ul li .bttn {
   padding:20px;
 }
 
-.logo-holder {
-  margin-top: 60px;
-  margin-bottom: 25px;
-}
-
 .logo-login {
   margin-bottom: 15px;
+}
+
+.logo-navbar {
+  height: 35px;
+  margin: 0 20px 0 10px;
 }
 
 .bottom-left-svg{
@@ -246,4 +247,35 @@ ul li .bttn {
 
 .bottom-right-svg{
     text-align: center;
+}
+
+.disclosure-div {
+  margin: 0 0 10px 0;
+  padding: 8px;
+  color: grey;
+  text-align: left;
+  background-color: #283c63;
+  border: 1px solid white;
+  border-radius: 4px;
+}
+
+.img-holder {
+  display: inline-block;
+}
+
+.navbar {
+  height: 30px !important;
+}
+
+.navbar-brand-cust {
+  padding: 5px 5px;
+  height: 48px;
+}
+
+.dropdwn-header {
+  padding: 5px 5px;
+}
+
+.aligner-item-bottom {
+  align-self: flex-end;
 }

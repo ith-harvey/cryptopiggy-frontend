@@ -5,7 +5,6 @@ import { registerUser } from '../../actions';
 import { Link } from 'react-router-dom';
 
 import Logo from './component_logo';
-import AddressForm from '../component_addressForm';
 import AddressList from '../component_addressList';
 import { allAddressesWithBalance } from '../../actions/etherscan'
 

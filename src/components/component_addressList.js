@@ -32,10 +32,10 @@ class AddressList extends Component {
     return (
       <div>
         <div>
-          { addressNodes }
+          <AddressForm />
         </div>
         <div>
-          <AddressForm />
+          {addressNodes}
         </div>
       </div>
     )

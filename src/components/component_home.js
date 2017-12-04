@@ -2,18 +2,19 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Button, Glyphicon, Dropdown, MenuItem} from 'react-bootstrap';
 import AddressList from './component_addressList';
+import NavBar from './component_navbar';
 import PortfolioValue from './component_portfolioValue';
 
 import {logoutUser} from '../actions';
+import {allAddressesWithBalance} from '../actions/etherscan';
 import {performanceHistory} from '../actions/performance-history'
-import {allAddressesWithBalance} from '../actions/etherscan'
 
 
 class Home extends Component {
 
   componentWillMount() {
-    this.props.allAddressesWithBalance()
     this.props.performanceHistory()
+    this.props.allAddressesWithBalance()
   }
 
 
@@ -29,23 +30,12 @@ class Home extends Component {
 
     return (
       <div>
+        <NavBar
+          handleLogout={() => this.handleLogout()}
+          linkTo={{path: '/addresses', name: 'Address editor', fromPath: '/home', fromName: 'Dashboard'}}
+          heading={'Dashboard'}
+        />
         <div className="container">
-          <nav className="navbar navbar-cutom">
-            <span className="navbar-brand">Crypto Piggy</span>
-            <ul className="navbar-nav navbar-right">
-              <li className="nav-item">
-                <Dropdown id="bg-nested-dropdown">
-                  <Dropdown.Toggle className="bttn">
-                    <Glyphicon glyph="cog"></Glyphicon>
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <MenuItem className="dropdwn-menu" onClick={this.handleLogout.bind(this)}>Logout</MenuItem>
-                    <MenuItem className="dropdwn-menu" onClick={this.handleLogout.bind(this)}>Modify addresses</MenuItem>
-                  </Dropdown.Menu>
-              </Dropdown>
-              </li>
-            </ul>
-          </nav>
           <div className="col-xs-12">
             <PortfolioValue
               totalEth={this.props.totalEth}
@@ -56,11 +46,6 @@ class Home extends Component {
               sixMonthsAgo={this.props.sixMonthsAgo}
               oneYearAgo={this.props.oneYearAgo}
               whenCreated={this.props.whenCreated}
-            />
-          </div>
-          <div className="col-xs-12">
-            <AddressList
-              addressesArr={this.props.addressesArr}
             />
           </div>
         </div>
@@ -79,7 +64,6 @@ function mapStateToProps(state) {
     aDayAgo: state.performanceHistory.aDayAgo,
     oneWeekAgo: state.performanceHistory.oneWeekAgo,
     whenCreated: state.performanceHistory.whenCreated,
-    addressesArr: state.address.addressesArr
   }
 }
 

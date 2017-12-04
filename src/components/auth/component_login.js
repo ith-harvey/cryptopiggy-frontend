@@ -30,8 +30,12 @@ class Login extends Component {
     const { handleSubmit } = this.props;
     return (
         <div className="container">
-          <div className="logo-holder">
-            <Logo />
+          <div className="logo-holder text-center">
+            <Logo
+              loginImg='../../../style/images/Cryptopiggy_Logo_L.png'
+              imgClass='logo-login'
+             />
+             <h1>Crypto Piggy</h1>
           </div>
           <div className="col-xs-10 col-xs-offset-1">
             <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
