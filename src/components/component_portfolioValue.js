@@ -33,10 +33,9 @@ class PortfolioValue extends Component {
       console.log('cur', curval)
       console.log('old', oldval)
       let returnVal = ((curval - oldval) / oldval * 100).toString()
-      // .substr(2,3)
-      console.log('percent', returnVal)
-      returnVal = `${returnVal.substr(0,2)}.${returnVal.substr(2,3)}%`
-      return returnVal
+      returnVal = returnVal.slice(0,returnVal.length - 10)
+      console.log('percent',returnVal)
+      return Number(returnVal)
     }
 
 
@@ -162,7 +161,7 @@ class PortfolioValue extends Component {
             </span>
           </div>
           <div className={"col-xs-6 text-center " + modifytxt.color}>
-            <h3 className="heading-time-window">{this.state.performPercent}</h3>
+            <h3 className="heading-time-window">{this.state.performPercent}%</h3>
             <span className={"tiny-label-colorless " + modifytxt.color}>
               {modifytxt.mssg}
             </span>
