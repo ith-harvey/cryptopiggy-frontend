@@ -7,6 +7,7 @@ class PortfolioValue extends Component {
   state = {
     performWindowVal: 'nothing yet',
     performWindowData: [],
+    xAxisInterval: '',
     performPercent: 'can\'t calculate',
     title: "All time view"
   }
@@ -19,7 +20,7 @@ class PortfolioValue extends Component {
 
     let handleInput = e => e ? e.target.getAttribute("value") : 'whenCreated'
 
-    let diff, windowData, percentDiff
+    let diff, windowData, percentDiff, xInterval
 
     let calcDiff = (curval, oldval) => {
       let returnval = (curval - oldval).toFixed(2)
@@ -29,88 +30,75 @@ class PortfolioValue extends Component {
     let calcPercentDiff = (curval, oldval) => {
       curval = Number(curval)
       oldval = Number(oldval)
-      console.log('cur', curval)
-      console.log('old', oldval)
       let returnVal = ((curval - oldval) / oldval * 100).toString()
       returnVal = returnVal.slice(0,returnVal.length - 10)
-      console.log('percent',returnVal)
       return Number(returnVal)
+    }
+
+
+    let setLineChrtValues = (timeWindow) => {
+      // if value !null -> set timewindow values for lineChart
+      // This function:
+        // calculates difference
+        // sets up the points on the graph
+        // calculates percent difference
+        // instructs lnchart on how to set x axis time 'hourly' or 'monthly'
+
+      if (timeWindow.valueBackThen) { 
+      diff = calcDiff(this.props.totalUsd, timeWindow.valueBackThen)
+
+      windowData = timeWindow.windowData.slice()
+
+      percentDiff = calcPercentDiff(this.props.totalUsd, timeWindow.valueBackThen)
+
+      xInterval = timeWindow.xAxisInterval
+      } else {
+        diff = 'Not enough history', percentDiff = 'can\'t calculate', windowData = [], xInterval='can\'t calculate'
+      }
+      this.setState({
+        performWindowVal: diff,
+        performWindowData: windowData,
+        performPercent: percentDiff,
+        xAxisInterval: xInterval
+      })
     }
 
 
     switch(handleInput(e)) {
       case '24h':
-        if (this.props.aDayAgo.valueBackThen) {
-          diff = calcDiff(this.props.totalUsd,this.props.aDayAgo.valueBackThen)
-          windowData = this.props.aDayAgo.windowData.slice()
-
-          percentDiff = calcPercentDiff(this.props.totalUsd, this.props.aDayAgo.valueBackThen)
-        } else {
-          diff = 'Not enough history', percentDiff = 'can\'t calculate', windowData = []
-        }
+        setLineChrtValues(this.props.aDayAgo)
         this.setState({title: "One day view"})
       break;
 
       case '.25':
-        if (this.props.oneWeekAgo.valueBackThen) {
-          diff = calcDiff(this.props.totalUsd,this.props.oneWeekAgo.valueBackThen)
-          windowData = this.props.oneWeekAgo.windowData.slice()
-
-          percentDiff = calcPercentDiff(this.props.totalUsd, this.props.oneWeekAgo.valueBackThen)
-        } else {
-          diff = 'Not enough history', percentDiff = 'can\'t calculate', windowData = []
-        }
+        setLineChrtValues(this.props.oneWeekAgo)
         this.setState({title: "One week view"})
       break;
 
       case '1':
-        if (this.props.oneMonthAgo.valueBackThen) {
-          diff = calcDiff(this.props.totalUsd,this.props.oneMonthAgo.valueBackThen)
-          windowData = this.props.oneMonthAgo.windowData.slice()
-
-          percentDiff = calcPercentDiff(this.props.totalUsd, this.props.oneMonthAgo.valueBackThen)
-        }
-        else diff = 'Not enough history', windowData = [], percentDiff = 'can\'t calculate'
+        setLineChrtValues(this.props.oneMonthAgo)
         this.setState({title: "One month view"})
       break;
 
       case '6':
-      if (this.props.sixMonthsAgo.valueBackThen) {
-        diff = calcDiff(this.props.totalUsd,this.props.sixMonthsAgo.valueBackThen)
-        windowData = this.props.sixMonthsAgo.windowData.slice()
-
-        percentDiff = calcPercentDiff(this.props.totalUsd, this.props.sixMonthsAgo.valueBackThen)
-      }
-      else diff = 'Not enough history', windowData = [], percentDiff = 'can\'t calculate'
-      this.setState({title: "Six month view"})
+        setLineChrtValues(this.props.sixMonthsAgo)
+        this.setState({title: "Six month view"})
       break;
 
       case '12':
-      if (this.props.oneYearAgo.valueBackThen) {
-        diff = calcDiff(this.props.totalUsd,this.props.oneYearAgo.valueBackThen)
-        windowData = this.props.oneYearAgo.windowData.slice()
-
-        percentDiff = calcPercentDiff(this.props.totalUsd, this.props.oneYearAgo.valueBackThen)
-      }
-      else diff = 'Not enough history', windowData = [], percentDiff = 'can\'t calculate'
-      this.setState({title: "One year view"})
+        setLineChrtValues(this.props.oneYearAgo)
+        this.setState({title: "One year view"})
       break;
 
       default:
-      if (this.props.whenCreated.valueBackThen) {
-        diff = calcDiff(this.props.totalUsd, this.props.whenCreated.valueBackThen)
-        windowData = this.props.whenCreated.windowData.slice()
-
-        percentDiff = calcPercentDiff(this.props.totalUsd, this.props.whenCreated.valueBackThen)
-      }
-      else diff = 'Not enough history', windowData = [], percentDiff = 'can\'t calculate'
-      this.setState({title: "All time view"})
+        setLineChrtValues(this.props.whenCreated)
+        this.setState({title: "All time view"})
     }
-    this.setState({performWindowVal: diff, performWindowData: windowData, performPercent: percentDiff})
+
   }
 
   render() {
-    let { performWindowVal, performWindowData, performPercent } = this.state
+    console.log('xAxisInterval logging', this.state.xAxisInterval)
     const modifytxt = {}
 
     if (this.state.performWindowVal > 0) {
@@ -170,6 +158,7 @@ class PortfolioValue extends Component {
         </div>
           <LineChart
             performanceData={this.state.performWindowData}
+            xAxisInterval={this.state.xAxisInterval}
           />
       </div>
     )

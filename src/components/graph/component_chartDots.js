@@ -7,8 +7,9 @@ class Dots extends Component {
       let _self = this;
 
       //remove last & first point
-      let data = this.props.data.slice().splice(1);
-      data.pop();
+      let data = this.props.data.slice()
+      // .splice(1);
+      // data.pop();
 
       let circles = data.map(function( d, i ) {
         return (

@@ -46,7 +46,10 @@ class LineChart extends Component {
   }
 
   render() {
+    console.log('data we play with : ', this.props.xAxisInterval)
     if (this.props.performanceData.length < 1) return <div />
+
+      console.log('data we play with : ',this.props.xAxisInterval)
 
       let margin = {top: 5, right: 50, bottom: 20, left: 50},
           w = this.state.width - (margin.left + margin.right),
@@ -86,12 +89,12 @@ class LineChart extends Component {
       let xAxis = d3.axisBottom(x)
           .tickValues(
             this.props.performanceData.map(function(d,i) {
-            if( i > 0 ) {
+            // if( i > 0 ) {
               // return d.date; I WILL HAVE TO CHANGE THIS ONCE MY DATA IS UP AND RUNNING
-              if(i % 3 === 0) return d.date;
-              else return ''
-             }
-          }).splice(1)
+              return d.date;
+             // }
+          })
+          // .splice(1)
           )
          .tickFormat(d3.timeFormat("%m/%d"))
          .ticks(5);
