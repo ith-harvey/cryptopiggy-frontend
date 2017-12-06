@@ -22,12 +22,12 @@ class PortfolioValue extends Component {
 
     let diff, windowData, percentDiff, xInterval
 
-    let calcDiff = (curval, oldval) => {
+    let difference = (curval, oldval) => {
       let returnval = (curval - oldval).toFixed(2)
       return returnval
     }
 
-    let calcPercentDiff = (curval, oldval) => {
+    let percentDif = (curval, oldval) => {
       curval = Number(curval)
       oldval = Number(oldval)
       let returnVal = ((curval - oldval) / oldval * 100).toString()
@@ -44,14 +44,12 @@ class PortfolioValue extends Component {
         // calculates percent difference
         // instructs lnchart on how to set x axis time 'hourly' or 'monthly'
 
-      if (timeWindow.valueBackThen) { 
-      diff = calcDiff(this.props.totalUsd, timeWindow.valueBackThen)
+      if (timeWindow.valueBackThen) {
+        diff = difference(this.props.totalUsd, timeWindow.valueBackThen)
+        windowData = timeWindow.windowData.slice()
+        percentDiff = percentDif(this.props.totalUsd, timeWindow.valueBackThen)
+        xInterval = timeWindow.xAxisInterval
 
-      windowData = timeWindow.windowData.slice()
-
-      percentDiff = calcPercentDiff(this.props.totalUsd, timeWindow.valueBackThen)
-
-      xInterval = timeWindow.xAxisInterval
       } else {
         diff = 'Not enough history', percentDiff = 'can\'t calculate', windowData = [], xInterval='can\'t calculate'
       }

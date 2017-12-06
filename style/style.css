@@ -281,5 +281,18 @@ ul li .bttn {
 
 svg {
   display: block;
-  margin: 0 0 40px -25px;
+  margin: 0 0 40px 0;
+}
+
+.hidden-tick > text {
+  display: none;
+}
+
+.hidden-tick > line {
+  stroke: #777;
+}
+
+.visible-tick > line {
+  fill: transparent;
+  shape-rendering: crispEdges;
 }

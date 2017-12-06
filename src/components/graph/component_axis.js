@@ -13,16 +13,33 @@ class Axis extends Component {
       this.renderAxis();
     }
 
-    renderAxis() {
-        var node = ReactDOM.findDOMNode(this);
-        d3.select(node).call(this.props.axis);
+    xOrYModify(node) {
+      if (this.props.axisType === 'y'){
+        return d3.select(node).call(this.props.axis);
+      } else {
+        return d3.select(node)
+        .call(this.props.axis).selectAll(".tick")
+        .attr('class', 'tick visible-tick')
+        .filter( (d,i) => {
+          if (i % 6) return d
+          console.log('inselection! d', d)
+          console.log('inselection! d', i)
+        })
+        .attr('class', 'tick hidden-tick');
+      }
     }
+
+    renderAxis() {
+      var node = ReactDOM.findDOMNode(this);
+      this.xOrYModify(node)
+    }
+
     render() {
 
         var translate = "translate(0,"+(this.props.h)+")";
 
         return (
-          <g className="axis"
+          <g className={"axis "+this.props.axisType+"-axis"}
             transform={this.props.axisType=='x'?translate:""} >
           </g>
         )

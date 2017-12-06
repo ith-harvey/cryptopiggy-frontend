@@ -45,13 +45,47 @@ class LineChart extends Component {
     });
   }
 
+
+  customizeXAxis(x) {
+
+    let setxAxisFormat = () => {
+      if (this.props.xAxisInterval === 'monthly') return d3.timeFormat("%m/%d")
+      else return d3.timeFormat("%m/%d %H:%M")
+    }
+
+    if (this.props.performanceData.length < 5) {
+      return d3.axisBottom(x)
+          .tickValues(
+            this.props.performanceData.map( (d,i) => {
+              // console.log('d.date: ', d)
+              return d.date;
+          })
+          )
+         .tickFormat(setxAxisFormat())
+         .ticks(5);
+    } else if (this.props.performanceData.length >= 5) {
+      return d3.axisBottom(x)
+          .tickValues(
+            this.props.performanceData.map( (d,i) => {
+              // console.log('d.date: ', d)
+              return d.date;
+          })
+          )
+         .tickFormat(setxAxisFormat())
+         .ticks(5);
+    }
+  }
+
+
+  buildChart() {
+
+  }
+
+
   render() {
-    console.log('data we play with : ', this.props.xAxisInterval)
     if (this.props.performanceData.length < 1) return <div />
 
-      console.log('data we play with : ',this.props.xAxisInterval)
-
-      let margin = {top: 5, right: 50, bottom: 20, left: 50},
+      let margin = {top: 5, right: 40, bottom: 60, left: 10},
           w = this.state.width - (margin.left + margin.right),
           h = this.props.height - (margin.top + margin.bottom);
 
@@ -60,6 +94,7 @@ class LineChart extends Component {
       this.props.performanceData.forEach(function (d) {
         d.date = parseDate(d.day);
       });
+
 
       let x = d3.scaleTime()
           .domain(d3.extent(this.props.performanceData, function (d) {
@@ -86,23 +121,24 @@ class LineChart extends Component {
       let yAxis = d3.axisLeft(y)
           .ticks(5);
 
-      let xAxis = d3.axisBottom(x)
-          .tickValues(
-            this.props.performanceData.map(function(d,i) {
-            // if( i > 0 ) {
-              // return d.date; I WILL HAVE TO CHANGE THIS ONCE MY DATA IS UP AND RUNNING
-              return d.date;
-             // }
-          })
-          // .splice(1)
-          )
-         .tickFormat(d3.timeFormat("%m/%d"))
-         .ticks(5);
+      let xAxis = this.customizeXAxis(x)
 
       let yGrid = d3.axisLeft(y)
           .ticks(5)
           .tickFormat("")
           .tickSize(-w, 0, 0);
+
+
+      // d3.selectAll(".tick").attr('class', 'hidden-ticks')
+      // .attr('class', 'hidden-ticks');
+      // .filter( (d,i) => {
+      //   console.log('in fileter: ', d)
+      //   console.log('in fileter: ', i)
+      //   if (i % 5) {
+      //     return d
+      //   }
+      // })
+      // .select('tick')
 
       return (
           <svg id={this.props.chartId} width={this.state.width} height={this.props.height} className="col-xs-12">
@@ -128,8 +164,8 @@ class LineChart extends Component {
 }
 
 LineChart.defaultProps = {
-  width: 340,
-  height: 235,
+  width: 300,
+  height: 280,
   chartId: 'v1_chart'
 }
 
