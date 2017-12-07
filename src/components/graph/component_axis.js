@@ -14,19 +14,82 @@ class Axis extends Component {
     }
 
     xOrYModify(node) {
-      if (this.props.axisType === 'y'){
+      if (this.props.axisType === 'y') {
         return d3.select(node).call(this.props.axis);
       } else {
-        return d3.select(node)
-        .call(this.props.axis).selectAll(".tick")
-        .attr('class', 'tick visible-tick')
-        .filter( (d,i) => {
-          if (i % 6) return d
-          console.log('inselection! d', d)
-          console.log('inselection! d', i)
-        })
-        .attr('class', 'tick hidden-tick');
-      }
+
+
+        if (this.props.numberOfNodes < 25) {
+          return d3.select(node)
+          .call(this.props.axis).selectAll(".tick")
+          .attr('class', 'tick hidden-tick')
+          .filter( (d,i) => {
+            let copy = new Date(d)
+            copy.setHours(12)
+            if (d.getTime() === copy.getTime()) {
+              return d
+            }
+            copy.setHours(18)
+            if (d.getTime() === copy.getTime()) {
+              return d
+            }
+            copy.setHours(0)
+            if (d.getTime() === copy.getTime()) {
+              return d
+            }
+            copy.setHours(6)
+            if (d.getTime() === copy.getTime()) {
+              return d
+            }
+          })
+          .attr('class', 'tick visible-tick')
+          .filter( (d,i) => {
+            let copy = new Date(d)
+            copy.setHours(0)
+            if (d.getTime() === copy.getTime()) {
+              return d
+            }
+          })
+          .attr('class', 'tick visible-tick just-date');
+          // IMPORTANT need to go back and clip the hours off of the date
+        }
+
+        if (25 < this.props.numberOfNodes < 50) {
+          return d3.select(node)
+          .call(this.props.axis).selectAll(".tick")
+          .attr('class', 'tick hidden-tick')
+          .filter( (d,i) => {
+            let copy = new Date(d)
+            copy.setHours(12)
+            if (d.getTime() === copy.getTime()) {
+              return d
+            }
+            copy.setHours(18)
+            if (d.getTime() === copy.getTime()) {
+              return d
+            }
+            copy.setHours(0)
+            if (d.getTime() === copy.getTime()) {
+              return d
+            }
+            copy.setHours(6)
+            if (d.getTime() === copy.getTime()) {
+              return d
+            }
+          })
+          .attr('class', 'tick visible-tick')
+          .filter( (d,i) => {
+            let copy = new Date(d)
+            copy.setHours(0)
+            if (d.getTime() === copy.getTime()) {
+              return d
+            }
+          })
+          .attr('class', 'tick visible-tick just-date');
+          // IMPORTANT need to go back and clip the hours off of the date
+        }
+
+    }
     }
 
     renderAxis() {
@@ -37,7 +100,6 @@ class Axis extends Component {
     render() {
 
         var translate = "translate(0,"+(this.props.h)+")";
-
         return (
           <g className={"axis "+this.props.axisType+"-axis"}
             transform={this.props.axisType=='x'?translate:""} >

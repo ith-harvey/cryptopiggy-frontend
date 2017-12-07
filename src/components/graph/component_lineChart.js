@@ -128,18 +128,6 @@ class LineChart extends Component {
           .tickFormat("")
           .tickSize(-w, 0, 0);
 
-
-      // d3.selectAll(".tick").attr('class', 'hidden-ticks')
-      // .attr('class', 'hidden-ticks');
-      // .filter( (d,i) => {
-      //   console.log('in fileter: ', d)
-      //   console.log('in fileter: ', i)
-      //   if (i % 5) {
-      //     return d
-      //   }
-      // })
-      // .select('tick')
-
       return (
           <svg id={this.props.chartId} width={this.state.width} height={this.props.height} className="col-xs-12">
             <g transform={transform}>
@@ -147,7 +135,7 @@ class LineChart extends Component {
               <Grid h={h} grid={yGrid} gridType="y"/>
 
               <Axis h={h} axis={yAxis} axisType="y" />
-              <Axis h={h} axis={xAxis} axisType="x"/>
+              <Axis h={h} axis={xAxis} numberOfNodes={this.props.performanceData.length} axisType="x"/>
 
               <path className="line" d={line(this.props.performanceData)} strokeLinecap="round"/>
 
