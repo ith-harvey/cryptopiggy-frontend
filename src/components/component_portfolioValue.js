@@ -43,7 +43,7 @@ class PortfolioValue extends Component {
         // sets up the points on the graph
         // calculates percent difference
         // instructs lnchart on how to set x axis time 'hourly' or 'monthly'
-
+        console.log('testing time window thats failing', timeWindow.valueBackThen)
       if (timeWindow.valueBackThen) {
         diff = difference(this.props.totalUsd, timeWindow.valueBackThen)
         windowData = timeWindow.windowData.slice()

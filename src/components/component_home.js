@@ -26,7 +26,7 @@ class Home extends Component {
 
 
   render() {
-    if (!this.props.totalUSD) return <div>Loading animation...</div>
+    if (!this.props.totalUSD || !this.props.whenCreated) return <div>Loading animation...</div>
 
     return (
       <div>

@@ -49,8 +49,10 @@ class LineChart extends Component {
   customizeXAxis(x) {
 
     let setxAxisFormat = () => {
+      if((this.props.xAxisInterval === 'hourly')) return d3.timeFormat("%m/%d %H:%M")
       if (this.props.xAxisInterval === 'monthly') return d3.timeFormat("%m/%d")
-      else return d3.timeFormat("%m/%d %H:%M")
+      if (this.props.xAxisInterval === 'yearly') return d3.timeFormat("%m/%y")
+
     }
 
     if (this.props.performanceData.length < 5) {
@@ -85,7 +87,7 @@ class LineChart extends Component {
   render() {
     if (this.props.performanceData.length < 1) return <div />
 
-      let margin = {top: 5, right: 40, bottom: 60, left: 10},
+      let margin = {top: 5, right: 40, bottom: 60, left: 25},
           w = this.state.width - (margin.left + margin.right),
           h = this.props.height - (margin.top + margin.bottom);
 
@@ -135,7 +137,10 @@ class LineChart extends Component {
               <Grid h={h} grid={yGrid} gridType="y"/>
 
               <Axis h={h} axis={yAxis} axisType="y" />
-              <Axis h={h} axis={xAxis} numberOfNodes={this.props.performanceData.length} axisType="x"/>
+              <Axis h={h} axis={xAxis}
+                numberOfNodes={this.props.performanceData.length}
+                xAxisInterval={this.props.xAxisInterval}
+                axisType="x"/>
 
               <path className="line" d={line(this.props.performanceData)} strokeLinecap="round"/>
 
