@@ -26,8 +26,8 @@ class AddressPage extends Component {
       <div>
         <NavBar
           handleLogout={() => this.handleLogout()}
-          heading={'Public address editor'}
-          linkTo={{path: null}}
+          linkTo={{path: '/', name: 'Dashboard', fromPath: '/addresses', fromName: 'Address editor'}}
+          heading={'Public Address editor'}
         />
         <div className="container">
 
@@ -35,9 +35,6 @@ class AddressPage extends Component {
             DISCLOSURE: Do not enter in and save your private address in the space below. The input below is ment for your public address so we can track the ammount of crypto you have in your wallet and therefore assess it's value.
           </div>
           <div className="col-xs-11">
-
-            <Link to={this.props.location.query.fromPath} className="bttn pull-right">{this.props.location.query.fromName}</Link>
-
             <AddressList
               addressesArr={this.props.addressesArr}
             />

@@ -53,7 +53,10 @@ class AddressForm extends Component {
         {this.renderAlert()}
         <div className="row">
           <div className="col-xs-8">
-            <Field name="address" className="input-cust form-control" component={renderField} type="text" />
+            <Field name="address"
+               className="input-cust form-control"
+              component={renderField}
+              type="text" />
           </div>
           <div className="col-xs-4">
             <button type="submit" className="bttn">add address</button>

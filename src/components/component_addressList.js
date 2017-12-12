@@ -31,10 +31,10 @@ class AddressList extends Component {
 
     return (
       <div>
-        <div>
+        <div className='margin-bottom'>
           <AddressForm />
         </div>
-        <div>
+        <div className="scroll-div">
           {addressNodes}
         </div>
       </div>

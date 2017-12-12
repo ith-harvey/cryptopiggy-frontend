@@ -32,7 +32,7 @@ class Home extends Component {
       <div>
         <NavBar
           handleLogout={() => this.handleLogout()}
-          linkTo={{path: '/addresses', name: 'Address editor', fromPath: '/home', fromName: 'To dashboard'}}
+          linkTo={{path: '/addresses', name: 'Address editor', fromPath: '/', fromName: 'Dashboard'}}
           heading={'Dashboard'}
         />
         <div className="container">

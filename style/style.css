@@ -26,6 +26,11 @@ body {
   margin: 0 auto;
 }
 
+.horizontal-center-dropdwn {
+  margin: auto;
+  align-self: center;
+}
+
 .vertical-center-contain {
   display: flex;
   justify-content: center;
@@ -44,6 +49,10 @@ body {
   padding: 0;
   width: 100%;
   color: white;
+}
+
+.margin-bottom {
+  margin: 0 0 10px 0;
 }
 
 .navbar-cutom {
@@ -78,11 +87,10 @@ ul li .bttn {
 
 .input-cust {
   background-image: none;
-  background-color: none;
+  background-color: #283c63;
   border: 1px solid white;
   border-radius: 4px;
   color: white;
-  background-color: transparent;
 }
 
 .bttn {
@@ -251,7 +259,7 @@ ul li .bttn {
 .disclosure-div {
   margin: 0 0 10px 0;
   padding: 8px;
-  color: grey;
+  color: lightgrey;
   text-align: left;
   background-color: #283c63;
   border: 1px solid white;
@@ -295,4 +303,23 @@ svg {
 .visible-tick > line {
   fill: transparent;
   shape-rendering: crispEdges;
+}
+
+.scroll-div {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 300px;
+  width: 310px;
+}
+
+body::-webkit-scrollbar {
+  color: grey;
+}
+
+.width-line {
+  width: 20%;
+}
+
+.width-third {
+  width: 35%;
 }

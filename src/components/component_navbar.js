@@ -16,8 +16,8 @@ class NavBar extends Component {
         <span className="aligner-item-bottom">{this.props.heading}</span>
         </span>
         <Dropdown id="bg-nested-dropdown" className="pull-right dropdwn-header aligner-item-bottom">
-          <Dropdown.Toggle className="bttn btn-sm">
-            <Glyphicon glyph="cog"></Glyphicon>
+          <Dropdown.Toggle className="bttn">
+            <Glyphicon glyph="menu-hamburger"></Glyphicon>
           </Dropdown.Toggle>
           <Dropdown.Menu>
             <MenuItem className="dropdwn-menu" onClick={this.props.handleLogout.bind(this)}>Logout</MenuItem>

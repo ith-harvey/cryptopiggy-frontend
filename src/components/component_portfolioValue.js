@@ -51,7 +51,7 @@ class PortfolioValue extends Component {
         xInterval = timeWindow.xAxisInterval
 
       } else {
-        diff = 'Not enough history', percentDiff = 'can\'t calculate', windowData = [], xInterval='can\'t calculate'
+        diff = null, percentDiff = null, windowData = [], xInterval= null
       }
       this.setState({
         performWindowVal: diff,
@@ -96,7 +96,7 @@ class PortfolioValue extends Component {
   }
 
   render() {
-    console.log('xAxisInterval logging', this.state.xAxisInterval)
+
     const modifytxt = {}
 
     if (this.state.performWindowVal > 0) {
@@ -106,6 +106,9 @@ class PortfolioValue extends Component {
       modifytxt.color = 'red'
       modifytxt.mssg = 'loss'
     }
+
+    console.log('testing if percent exits', this.state.performPercent)
+    console.log('testing if percent exitsopposite', (!this.state.performPercent))
 
     return (
       <div>
@@ -124,20 +127,26 @@ class PortfolioValue extends Component {
         </div>
         <div className="row vertical-center">
           <LineSeparator
-            separatorClass='col-xs-4'
+            separatorClass='width-line horizontal-center-dropdwn'
           />
-          <div className="col-xs-4">
-          <DropdownButton className="bttn dropdwn-window-button" title={this.state.title} id="bg-nested-dropdown">
+          <div className="width-third vertical-center horizontal-center-dropdwn">
+          <DropdownButton className="bttn dropdwn-window-button horizontal-center-dropdwn" title={this.state.title} id="bg-nested-dropdown">
             <MenuItem value="whenCreated" className="dropdwn-menu" onClick={(e)=> this.setWindow(e)}>All time view</MenuItem>
-            <MenuItem className="dropdwn-menu" value="24h" onClick={(e)=> this.setWindow(e)}>One day view</MenuItem>
-            <MenuItem className="dropdwn-menu" value=".25" onClick={(e)=> this.setWindow(e)}>One week view</MenuItem>
-            <MenuItem className="dropdwn-menu" value="1" onClick={(e)=> this.setWindow(e)}>One month view</MenuItem>
-            <MenuItem className="dropdwn-menu" value="6" onClick={(e)=> this.setWindow(e)}>Six month view</MenuItem>
-            <MenuItem className="dropdwn-menu" value="12" onClick={(e)=> this.setWindow(e)}>One year view</MenuItem>
+
+            <MenuItem className="dropdwn-menu" value="24h" disabled={!this.props.aDayAgo.valueBackThen} onClick={(e)=>  !this.props.aDayAgo.valueBackThen ? null : this.setWindow(e)}>One day view</MenuItem>
+
+            <MenuItem className="dropdwn-menu" value=".25" disabled={!this.props.oneWeekAgo.valueBackThen} onClick={(e)=>  !this.props.oneWeekAgo.valueBackThen ? null : this.setWindow(e)}>One week view</MenuItem>
+
+            <MenuItem className="dropdwn-menu" value="1" disabled={!this.props.oneMonthAgo.valueBackThen} onClick={(e)=>  !this.props.oneMonthAgo.valueBackThen ? null : this.setWindow(e)}>One month view</MenuItem>
+
+            <MenuItem className="dropdwn-menu" value="6" disabled={!this.props.sixMonthsAgo.valueBackThen} onClick={(e)=>  !this.props.sixMonthsAgo.valueBackThen ? null : this.setWindow(e)}>Six month view</MenuItem>
+
+            <MenuItem className="dropdwn-menu" value="12" disabled={!this.props.oneYearAgo.valueBackThen} onClick={(e)=>  !this.props.oneYearAgo.valueBackThen ? null : this.setWindow(e)}>One year view</MenuItem>
+
           </DropdownButton>
           </div>
           <LineSeparator
-            separatorClass='col-xs-4'
+            separatorClass='width-line horizontal-center-dropdwn'
           />
         </div>
         <div className="row vertical-center">
