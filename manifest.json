@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
 
-  "name": "Getting started example",
-  "description": "This extension allows the user to change the background color of the current page.",
+  "name": "Crypto Piggy an Ethereum crypto portfolio extension",
+  "description": "This extension allows users to track the performance of their Ethereum addresses",
   "version": "1.0",
   "browser_action": {
     "default_icon": "./style/images/CP_Logo_Gradient_L.png",

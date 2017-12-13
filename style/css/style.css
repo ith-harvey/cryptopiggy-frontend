@@ -245,6 +245,13 @@ ul li .bttn {
   margin-bottom: 15px;
 }
 
+.logo-loader {
+  position:relative;
+  height: 125px;
+  top: 185px;
+  left: 108px;
+}
+
 .logo-navbar {
   height: 35px;
   margin: 0 20px 0 10px;

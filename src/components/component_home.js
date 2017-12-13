@@ -4,6 +4,7 @@ import {Button, Glyphicon, Dropdown, MenuItem} from 'react-bootstrap';
 import AddressList from './component_addressList';
 import NavBar from './component_navbar';
 import PortfolioValue from './component_portfolioValue';
+import Loader from './component_loader';
 
 import {logoutUser} from '../actions';
 import {allAddressesWithBalance} from '../actions/etherscan';
@@ -26,7 +27,7 @@ class Home extends Component {
 
 
   render() {
-    if (!this.props.totalUSD || !this.props.whenCreated) return <div>Loading animation...</div>
+    if (!this.props.totalUSD || !this.props.whenCreated) return <div className="container"><Loader /></div>
 
     return (
       <div>
