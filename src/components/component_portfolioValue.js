@@ -114,7 +114,7 @@ class PortfolioValue extends Component {
       <div>
         <div className="row">
           <div className="text-right vertical-center">
-            <div className="horizontal-center">
+            <div className="horizontal-center-margin">
               <h1 className="title-total-val">
                 ${this.props.totalUsd}
               </h1>
@@ -126,16 +126,16 @@ class PortfolioValue extends Component {
           </div>
         </div>
 
-        <div className="row vertical-center">
+        <div className="row vertical-center horizontal-center">
           <div className="width-third">
             <LineSeparator
-              separatorClass='width-line horizontal-center-dropdwn'
+              separatorClass='width-line'
             />
           </div>
 
-          <div className="width-third">
-            <div className="width-third vertical-center horizontal-center-dropdwn">
-            <DropdownButton className="bttn dropdwn-window-button horizontal-center-dropdwn" title={this.state.title} id="bg-nested-dropdown">
+          <div className="width-dropdown">
+            <div className="vertical-center horizontal-center">
+            <DropdownButton className="bttn dropdwn-window-button" title={this.state.title} id="bg-nested-dropdown">
               <MenuItem value="whenCreated" className="dropdwn-menu" onClick={(e)=> this.setWindow(e)}>All time view</MenuItem>
 
               <MenuItem className="dropdwn-menu" value="24h" disabled={!this.props.aDayAgo.valueBackThen} onClick={(e)=>  !this.props.aDayAgo.valueBackThen ? null : this.setWindow(e)}>One day view</MenuItem>
