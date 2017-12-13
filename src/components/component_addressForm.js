@@ -19,7 +19,6 @@ const renderField = field => (
 
 function validate(formProps) {
   const errors = {};
-
   if (!formProps.address) {
     errors.email = 'Please enter a public address';
   }
@@ -56,7 +55,7 @@ class AddressForm extends Component {
             <Field name="address"
                className="input-cust form-control"
               component={renderField}
-              type="text" />
+              type="text" required/>
           </div>
           <div className="col-xs-4">
             <button type="submit" className="bttn">add address</button>

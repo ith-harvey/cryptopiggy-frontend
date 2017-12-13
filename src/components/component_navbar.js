@@ -15,7 +15,7 @@ class NavBar extends Component {
            />
         <span className="aligner-item-bottom">{this.props.heading}</span>
         </span>
-        <Dropdown id="bg-nested-dropdown" className="pull-right dropdwn-header aligner-item-bottom">
+        <Dropdown id="bg-nested-dropdown" className="pull-right margin-top dropdwn-header aligner-item-bottom">
           <Dropdown.Toggle className="bttn">
             <Glyphicon glyph="menu-hamburger"></Glyphicon>
           </Dropdown.Toggle>

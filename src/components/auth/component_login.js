@@ -16,6 +16,8 @@ class Login extends Component {
     });
   }
 
+  // minLength = (min, value) => value && value.length < min ? `Must be ${min} characters or more` : undefined
+
   renderAlert() {
     if(this.props.errorMessage) {
       return (
@@ -27,7 +29,10 @@ class Login extends Component {
   }
 
   render() {
+
+
     const { handleSubmit } = this.props;
+
     return (
         <div className="container">
           <div className="logo-holder text-center">
@@ -42,11 +47,14 @@ class Login extends Component {
             {this.renderAlert()}
               <div>
                 <label>Username</label>
-                <Field name="username" className="form-control input-cust" component="input" type="text" />
+                <Field name="username"
+                  className="form-control input-cust"
+                  component="input" type="text" required
+                 />
               </div>
               <div>
                 <label>Password</label>
-                <Field name="password" className="form-control input-cust" component="input" type="password" />
+                <Field name="password" className="form-control input-cust margin-bottom" component="input" type="password" required/>
               </div>
               <button type="submit" className="bttn pull-right">Login</button>
               <Link to="/register" className="bttn pull-right">Register</Link>

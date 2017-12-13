@@ -34,10 +34,6 @@ function validate(formProps) {
 }
 
 class Register extends Component {
-  constructor() {
-    super()
-    this.state = { addressFormVisible: false }
-  }
 
   componentWillMount() {
     this.props.allAddressesWithBalance()
@@ -71,11 +67,12 @@ class Register extends Component {
     return (
       <div className="container">
         <div className="col-xs-10 col-xs-offset-1">
-          <div className="logo-holder">
+          <div className="logo-holder text-center">
             <Logo
               loginImg='../../../style/images/Cryptopiggy_Logo_L.png'
               imgClass='logo-login'
              />
+             <h1>Crypto Piggy</h1>
           </div>
           <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
             {this.renderAlert()}
@@ -89,7 +86,7 @@ class Register extends Component {
             </div>
             <div>
               <label>Re-enter Password</label>
-              <Field name="doublechkpassword" className="form-control input-cust" component="input" type="password" />
+              <Field name="doublechkpassword" className="form-control input-cust margin-bottom" component="input" type="password" />
             </div>
             <button type="submit" className="bttn pull-right">Next</button>
             <Link to="/login" className="bttn pull-right">To Login</Link>

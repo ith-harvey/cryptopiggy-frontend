@@ -16,6 +16,10 @@ body {
   background: linear-gradient(to right, #4e4376, #2b5876); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+a:link {
+  text-decoration: none;
+}
+
 /*UTILITIES*/
 .vertical-center {
   display: flex;
@@ -281,6 +285,7 @@ ul li .bttn {
 
 .dropdwn-header {
   padding: 5px 5px;
+  margin: 5px 0 0 0;
 }
 
 .aligner-item-bottom {
