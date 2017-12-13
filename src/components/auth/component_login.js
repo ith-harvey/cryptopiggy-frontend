@@ -40,7 +40,8 @@ class Login extends Component {
               loginImg='../../../style/images/Cryptopiggy_Logo_L.png'
               imgClass='logo-login'
              />
-             <h1>Crypto Piggy</h1>
+             <span className="logo-login"><h1>Crypto Piggy</h1></span>
+             <p className="login-txt">A new way to track cryptocurency investments.</p>
           </div>
           <div className="col-xs-10 col-xs-offset-1">
             <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>

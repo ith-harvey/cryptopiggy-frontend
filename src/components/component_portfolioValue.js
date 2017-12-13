@@ -125,30 +125,40 @@ class PortfolioValue extends Component {
             </div>
           </div>
         </div>
+
         <div className="row vertical-center">
-          <LineSeparator
-            separatorClass='width-line horizontal-center-dropdwn'
-          />
-          <div className="width-third vertical-center horizontal-center-dropdwn">
-          <DropdownButton className="bttn dropdwn-window-button horizontal-center-dropdwn" title={this.state.title} id="bg-nested-dropdown">
-            <MenuItem value="whenCreated" className="dropdwn-menu" onClick={(e)=> this.setWindow(e)}>All time view</MenuItem>
-
-            <MenuItem className="dropdwn-menu" value="24h" disabled={!this.props.aDayAgo.valueBackThen} onClick={(e)=>  !this.props.aDayAgo.valueBackThen ? null : this.setWindow(e)}>One day view</MenuItem>
-
-            <MenuItem className="dropdwn-menu" value=".25" disabled={!this.props.oneWeekAgo.valueBackThen} onClick={(e)=>  !this.props.oneWeekAgo.valueBackThen ? null : this.setWindow(e)}>One week view</MenuItem>
-
-            <MenuItem className="dropdwn-menu" value="1" disabled={!this.props.oneMonthAgo.valueBackThen} onClick={(e)=>  !this.props.oneMonthAgo.valueBackThen ? null : this.setWindow(e)}>One month view</MenuItem>
-
-            <MenuItem className="dropdwn-menu" value="6" disabled={!this.props.sixMonthsAgo.valueBackThen} onClick={(e)=>  !this.props.sixMonthsAgo.valueBackThen ? null : this.setWindow(e)}>Six month view</MenuItem>
-
-            <MenuItem className="dropdwn-menu" value="12" disabled={!this.props.oneYearAgo.valueBackThen} onClick={(e)=>  !this.props.oneYearAgo.valueBackThen ? null : this.setWindow(e)}>One year view</MenuItem>
-
-          </DropdownButton>
+          <div className="width-third">
+            <LineSeparator
+              separatorClass='width-line horizontal-center-dropdwn'
+            />
           </div>
-          <LineSeparator
-            separatorClass='width-line horizontal-center-dropdwn'
-          />
+
+          <div className="width-third">
+            <div className="width-third vertical-center horizontal-center-dropdwn">
+            <DropdownButton className="bttn dropdwn-window-button horizontal-center-dropdwn" title={this.state.title} id="bg-nested-dropdown">
+              <MenuItem value="whenCreated" className="dropdwn-menu" onClick={(e)=> this.setWindow(e)}>All time view</MenuItem>
+
+              <MenuItem className="dropdwn-menu" value="24h" disabled={!this.props.aDayAgo.valueBackThen} onClick={(e)=>  !this.props.aDayAgo.valueBackThen ? null : this.setWindow(e)}>One day view</MenuItem>
+
+              <MenuItem className="dropdwn-menu" value=".25" disabled={!this.props.oneWeekAgo.valueBackThen} onClick={(e)=>  !this.props.oneWeekAgo.valueBackThen ? null : this.setWindow(e)}>One week view</MenuItem>
+
+              <MenuItem className="dropdwn-menu" value="1" disabled={!this.props.oneMonthAgo.valueBackThen} onClick={(e)=>  !this.props.oneMonthAgo.valueBackThen ? null : this.setWindow(e)}>One month view</MenuItem>
+
+              <MenuItem className="dropdwn-menu" value="6" disabled={!this.props.sixMonthsAgo.valueBackThen} onClick={(e)=>  !this.props.sixMonthsAgo.valueBackThen ? null : this.setWindow(e)}>Six month view</MenuItem>
+
+              <MenuItem className="dropdwn-menu" value="12" disabled={!this.props.oneYearAgo.valueBackThen} onClick={(e)=>  !this.props.oneYearAgo.valueBackThen ? null : this.setWindow(e)}>One year view</MenuItem>
+
+            </DropdownButton>
+            </div>
+          </div>
+
+          <div className="width-third">
+            <LineSeparator
+              separatorClass='width-line horizontal-center-dropdwn'
+            />
+          </div>
         </div>
+
         <div className="row vertical-center">
           <div className={"col-xs-6 text-center " + modifytxt.color}>
             <h3 className="heading-time-window">${this.state.performWindowVal}</h3>

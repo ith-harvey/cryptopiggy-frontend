@@ -4,7 +4,7 @@ html {
 
 body {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-weight: 300;
+  font-weight: 200;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
@@ -14,6 +14,10 @@ body {
   background: #2b5876;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #4e4376, #2b5876);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #4e4376, #2b5876); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+label, a {
+  font-weight: inherit;
 }
 
 a:link {
@@ -103,11 +107,11 @@ ul li .bttn {
   padding: 6px 12px;
   margin: 0 2px 0 2px;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 200;
   line-height: 1.42857143;
   text-align: center;
   white-space: nowrap;
- al-align: middle;
+  al-align: middle;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
   cursor: pointer;
@@ -123,6 +127,7 @@ ul li .bttn {
 }
 
 .bttn:hover {
+  font-weight: 400;
   background-color: white;
   color: #2b5876;
   color: -webkit-linear-gradient(to right, #4e4376, #2b5876);  /* Chrome 10-25, Safari 5.1-6 */
@@ -137,11 +142,24 @@ ul li .bttn {
 .dropdown-menu {
   width: 140px !important;
   min-width: 130px !important;
+
+}
+
+.dropdown-menu>li>a {
+  font-weight: 200;
+  color: white;
+}
+
+.dropdown-menu>li>a:hover {
+  font-weight: 200;
+  background-color: white;
+  color: #2b5876;
+  color: -webkit-linear-gradient(to right, #4e4376, #2b5876);  /* Chrome 10-25, Safari 5.1-6 */
+  color: linear-gradient(to right, #4e4376, #2b5876);
 }
 
 .dropdown-menu, .dropdwn-menu, .dropdwn-menu a {
-  background-color: #283c63 !important;
-  color: white !important;
+  background-color: #283c63;
 }
 
 .dropdwn-menu {
@@ -188,7 +206,7 @@ ul li .bttn {
 
 .logo-holder {
   height: 200px;
-  margin: 50px 0 10px 0;
+  margin: 20px 0 60px 0;
 }
 
 .line {
@@ -242,9 +260,13 @@ ul li .bttn {
 }
 
 .logo-login {
-  margin-bottom: 15px;
+  margin: 10px 0 15px 0;
 }
 
+.login-txt {
+  margin: 5px 0 0 0;
+  padding: 2px;
+}
 .logo-loader {
   position:relative;
   height: 125px;
@@ -276,6 +298,7 @@ ul li .bttn {
   border: 1px solid white;
   border-radius: 4px;
 }
+
 
 .img-holder {
   display: inline-block;
@@ -329,9 +352,9 @@ body::-webkit-scrollbar {
 }
 
 .width-line {
-  width: 20%;
+  width: 100%;
 }
 
 .width-third {
-  width: 35%;
+  width: 33.3%;
 }
