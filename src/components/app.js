@@ -14,6 +14,7 @@ import AddAddress from './auth/component_login'
 import Mylibrary from './component_mylibrary'
 import NotFoundPage from './component_notfound'
 import RequireAuth from './auth/component_require_auth';
+import About from './component_about';
 
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
@@ -27,9 +28,10 @@ class App extends Component {
         <Switch>
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
+          <Route path="/about" component={About} />
           <Route path="/addresses" component={AddressPage} />
-          <Route path='/' component={RequireAuth(Home)} />
-          <Route path='/*' component={NotFoundPage}/>
+          <Route path="/" component={RequireAuth(Home)} />
+          <Route path="/*" component={NotFoundPage}/>
         </Switch>
       </Provider>
     )

@@ -1,0 +1,25 @@
+.modal-container {
+ height: 300px;
+ width: 92%;
+ position: absolute;
+}
+
+.modal-dialog {
+  position: absolute;
+  z-index: 1;
+  top: 40px;
+}
+
+.modal-content {
+  color: white;
+  background-color: #283c63;
+}
+
+
+.modal-container .modal-backdrop {
+ display: none;
+}
+
+.modal-footer {
+  border: none;
+}

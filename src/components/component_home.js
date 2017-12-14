@@ -5,6 +5,7 @@ import AddressList from './component_addressList';
 import NavBar from './component_navbar';
 import PortfolioValue from './component_portfolioValue';
 import Loader from './component_loader';
+import ContainedModal from './component_modal';
 
 import {logoutUser} from '../actions';
 import {allAddressesWithBalance} from '../actions/etherscan';
@@ -33,8 +34,13 @@ class Home extends Component {
       <div>
         <NavBar
           handleLogout={() => this.handleLogout()}
-          linkTo={{path: '/addresses', name: 'Address editor', fromPath: '/', fromName: 'Dashboard'}}
           heading={'Dashboard'}
+        />
+        <ContainedModal
+          modalHeader="Setup your dashboard"
+          modalBody={["Whoops, it looks like you have not setup your account yet. ", <br></br>,<br></br>, "In order to setup your dashboard, you must first provide information about your portfolio. To do so, please navigate to the address editor."]}
+          linkAddress="/addresses"
+          linkName="Address editor"
         />
         <div className="container">
           <div className="col-xs-12">

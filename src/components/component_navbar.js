@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Glyphicon, Dropdown, MenuItem} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Logo from './auth/component_logo';
+import About from './component_about';
 
 class NavBar extends Component {
 
@@ -22,14 +23,11 @@ class NavBar extends Component {
           <Dropdown.Menu>
             <MenuItem className="dropdwn-menu" onClick={this.props.handleLogout.bind(this)}>Logout</MenuItem>
 
-            {this.props.linkTo.path ? <MenuItem className="dropdwn-menu">
-              <Link
-                to={{pathname: this.props.linkTo.path,
-                  query: {fromPath: this.props.linkTo.fromPath,
-                  fromName: this.props.linkTo.fromName}}}>
-                {this.props.linkTo.name}
-              </Link>
-            </MenuItem> : ''}
+            <MenuItem className="dropdwn-menu">
+              <Link to="/"> Dashboard </Link>
+              <Link to="/addresses">Address editor </Link>
+              <Link to="/about">About</Link>
+            </MenuItem>
           </Dropdown.Menu>
         </Dropdown>
       </nav>
