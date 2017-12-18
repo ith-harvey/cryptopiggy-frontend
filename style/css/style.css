@@ -360,3 +360,7 @@ body::-webkit-scrollbar {
 .width-dropdown {
   width: 45%;
 }
+
+.width-full {
+  width:100%;
+}

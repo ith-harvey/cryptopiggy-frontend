@@ -1,0 +1,63 @@
+
+
+div[class^="tooltip-"] {
+  display: block;
+  position: absolute;
+  top: 63px;
+  right: 18px;
+  width: 320px;
+  z-index: 1090;
+  background-color: #283c63;
+  border: 1px solid white;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+}
+
+div[class^="arrow-up-"] {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 49px;
+  right: 26px;
+  z-index: 1091;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-bottom: 18px solid #283c63;
+}
+
+div[class^="arrow-up-border-"] {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 47.45px;
+  right: 26px;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-bottom: 18px solid white;
+}
+
+
+div .tooltip-addressEditor {
+  top: 251px;
+  height: 250px;
+  right: 18px;
+  overflow-y: auto;
+  overflow-x: none;
+}
+
+div .arrow-up-addressEditor {
+  top: 236px;
+  right: 220px;
+}
+
+div .arrow-up-border-addressEditor {
+  top: 234px;
+  right: 220px;
+}
+
+.tiny-info-txt {
+  display: inline-block;
+  color: lightgrey;
+  font-size: 12px;
+}

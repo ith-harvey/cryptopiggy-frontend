@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 import LineChart from './graph/component_lineChart';
 import LineSeparator from './component_lineSeparator';
+import AccountValue from './component_accountvalue';
+
 
 class PortfolioValue extends Component {
   state = {
@@ -43,7 +45,6 @@ class PortfolioValue extends Component {
         // sets up the points on the graph
         // calculates percent difference
         // instructs lnchart on how to set x axis time 'hourly' or 'monthly'
-        console.log('testing time window thats failing', timeWindow.valueBackThen)
       if (timeWindow.valueBackThen) {
         diff = difference(this.props.totalUsd, timeWindow.valueBackThen)
         windowData = timeWindow.windowData.slice()
@@ -97,6 +98,21 @@ class PortfolioValue extends Component {
 
   render() {
 
+    if (!this.state.performWindowData.length) return (
+      <div>
+        <AccountValue
+        totalUsd={this.props.totalUsd}
+        totalEth={this.props.totalEth}
+       />
+       <LineSeparator
+         separatorClass='width-full margin-bottom'
+       />
+        <div className="text-center disclosure-div">
+          Uh oh, it looks like you have either: <br></br> <br></br> 1. Not setup your public addresses with Crypto Piggy. <br></br> <br></br> or <br></br> <br></br> 2. It hasn't been an hour since you added your first address! <br></br> <br></br> If it has been an hour, don't wait! email questions@cryptopiggy.us with your account information so we can help.
+        </div>
+      </div>
+    )
+
     const modifytxt = {}
 
     if (this.state.performWindowVal > 0) {
@@ -107,25 +123,12 @@ class PortfolioValue extends Component {
       modifytxt.mssg = 'loss'
     }
 
-    console.log('testing if percent exits', this.state.performPercent)
-    console.log('testing if percent exitsopposite', (!this.state.performPercent))
-
     return (
       <div>
-        <div className="row">
-          <div className="text-right vertical-center">
-            <div className="horizontal-center-margin">
-              <h1 className="title-total-val">
-                ${this.props.totalUsd}
-              </h1>
-              <h4>
-                {this.props.totalEth}
-                <span className="tiny-label">Eth</span>
-              </h4>
-            </div>
-          </div>
-        </div>
-
+        <AccountValue
+          totalUsd={this.props.totalUsd}
+          totalEth={this.props.totalEth}
+         />
         <div className="row vertical-center horizontal-center">
           <div className="width-third">
             <LineSeparator

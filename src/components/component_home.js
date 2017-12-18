@@ -6,6 +6,7 @@ import NavBar from './component_navbar';
 import PortfolioValue from './component_portfolioValue';
 import Loader from './component_loader';
 import ContainedModal from './component_modal';
+import ToolTip from './component_tooltip';
 
 import {logoutUser} from '../actions';
 import {allAddressesWithBalance} from '../actions/etherscan';
@@ -13,10 +14,16 @@ import {performanceHistory} from '../actions/performance-history'
 
 
 class Home extends Component {
+  state = {
+    show: false
+  }
 
   componentWillMount() {
     this.props.performanceHistory()
     this.props.allAddressesWithBalance()
+
+    if (this.props.whenCreated.valueBackThen) this.setState({show: true})
+    console.log('do we have value backthen1?', this.props.whenCreated.valueBackThen)
   }
 
 
@@ -28,6 +35,9 @@ class Home extends Component {
 
 
   render() {
+
+
+
     if (!this.props.totalUSD || !this.props.whenCreated) return <div className="container"><Loader /></div>
 
     return (
@@ -36,11 +46,11 @@ class Home extends Component {
           handleLogout={() => this.handleLogout()}
           heading={'Dashboard'}
         />
-        <ContainedModal
-          modalHeader="Setup your dashboard"
-          modalBody={["Whoops, it looks like you have not setup your account yet. ", <br></br>,<br></br>, "In order to setup your dashboard, you must first provide information about your portfolio. To do so, please navigate to the address editor."]}
-          linkAddress="/addresses"
-          linkName="Address editor"
+        <ToolTip
+          toolTipHeader="Setup your account"
+          toolTipBody={["It looks like you still need to setup your Crypto Piggy account. ", <br></br>,<br></br>, "To do so, navigate to the drop down menu in the top right hand corner and select 'Address editor' to provide information about your portfolio."]}
+          displayToolTip={this.state.show}
+          toolTipType='dashboard'
         />
         <div className="container">
           <div className="col-xs-12">

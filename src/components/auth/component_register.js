@@ -40,13 +40,15 @@ class Register extends Component {
   }
 
   handleFormSubmit(formProps) {
+    console.log('trying to submit!!')
     this.props.registerUser(formProps, () => {
       this.props.history.push({
        pathname: '/addresses',
        query: {
          fromPath: '/home',
          fromName: 'To dashboard'
-       }
+       },
+       state: { show: true }
       })
     });
   }

@@ -5,7 +5,7 @@
   "description": "This extension allows users to track the performance of their Ethereum addresses",
   "version": "1.0",
   "browser_action": {
-    "default_icon": "./style/images/CP_Logo_Gradient_L.png",
+    "default_icon": "./style/images/THINGY.png",
     "default_popup": "index.html"
   },
   "permissions": [ "activeTab", "storage" ]

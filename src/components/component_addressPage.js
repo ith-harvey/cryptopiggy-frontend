@@ -4,15 +4,23 @@ import NavBar from './component_navbar';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ContainedModal from './component_modal';
+import ToolTip from './component_tooltip';
 
 import { logoutUser } from '../actions';
 import { allAddressesWithBalance } from '../actions/etherscan';
 
 
 class AddressPage extends Component {
+  state = {
+    show: false
+  }
 
   componentWillMount() {
     this.props.allAddressesWithBalance()
+
+    if (this.props.location.state !== undefined) {
+      this.setState({show: true})
+    }
   }
 
   handleLogout() {
@@ -22,12 +30,14 @@ class AddressPage extends Component {
   }
 
   render() {
+
     return (
       <div>
-        <ContainedModal
-          modalHeader="Address editor"
-          modalBody={["Crypto Piggy utilizes your Ethereum account's public address in order to provide you with insights and data visualizations on the dashboard.", <br></br>,<br></br>, "Simply enter in the public addresses you wish to track on the following page, it's as simple as that! If you don't know what a public address, don't worry. Just refer to this article about public addresses from Coin Desk and then enter in your address information when you're ready."]}
-         />
+        <ToolTip
+          toolTipHeader="Enter a public address"
+          toolTipBody={["Crypto Piggy utilizes your Ethereum account's public address in order to provide you with insights and data visualizations on the dashboard.", <br></br>,<br></br>, "Simply enter in the public addresses you wish to track in the input above.", <br></br>,<br></br>, <div className="tiny-info-txt"> If you don't know what a public address is, don't worry. Just refer to this <a href="https://www.investopedia.com/terms/p/public-key.asp">article about public addresses</a> from Investopedia and enter in your public address information when you're ready.</div>]}
+          displayToolTip={this.state.show}
+        />
         <NavBar
           handleLogout={() => this.handleLogout()}
           heading={'Public Address editor'}
