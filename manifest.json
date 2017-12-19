@@ -1,12 +1,15 @@
 {
   "manifest_version": 2,
 
-  "name": "Crypto Piggy an Ethereum crypto portfolio extension",
-  "description": "This extension allows users to track the performance of their Ethereum addresses",
+  "name": "Crypto Piggy",
+  "description": "Crypto Piggy is an open source crypto portfolio extension that allows users to track the performance of their Ethereum addresses",
   "version": "1.0",
   "browser_action": {
     "default_icon": "./style/images/THINGY.png",
     "default_popup": "index.html"
   },
+  "icons": { "16": "./style/images/THINGY.png",
+           "48": "./style/images/CP_Logo_Gradient_L.png",
+          "128": "./style/images/Cryptopiggy_Logo_L.png" },
   "permissions": [ "activeTab", "storage" ]
 }
