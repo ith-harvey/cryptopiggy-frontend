@@ -87,7 +87,7 @@ class LineChart extends Component {
   render() {
     if (this.props.performanceData.length < 1) return <div />
 
-      let margin = {top: 5, right: 40, bottom: 60, left: 25},
+      let margin = {top: 5, right: 70, bottom: 60, left: 40},
           w = this.state.width - (margin.left + margin.right),
           h = this.props.height - (margin.top + margin.bottom);
 

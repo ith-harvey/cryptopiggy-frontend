@@ -30,13 +30,13 @@ class AddressPage extends Component {
   }
 
   render() {
-
+    console.log('here is what determines the show', this.props.addressesArr.length)
     return (
       <div>
         <ToolTip
           toolTipHeader="Enter a public address"
-          toolTipBody={["Crypto Piggy utilizes your Ethereum account's public address in order to provide you with insights and data visualizations on the dashboard.", <br></br>,<br></br>, "Simply enter in the public addresses you wish to track in the input above.", <br></br>,<br></br>, <div className="tiny-info-txt"> If you don't know what a public address is, don't worry. Just refer to this <a href="https://www.investopedia.com/terms/p/public-key.asp">article about public addresses</a> from Investopedia and enter in your public address information when you're ready.</div>]}
-          displayToolTip={this.state.show}
+          toolTipBody={["Crypto Piggy utilizes your Ethereum account's public address in order to provide you with insights and data visualizations on the dashboard.", <br></br>,<br></br>, "Simply enter in the public addresses you wish to track in the input above.", <br></br>,<br></br>, <div className="tiny-info-txt"> If you don't know what a public address is refer to this <a href="https://www.investopedia.com/terms/p/public-key.asp">article about public addresses</a> from Investopedia and enter in your Ethereum public address information when you're ready.</div>]}
+          displayToolTip={this.props.addressesArr.length ? false : true}
         />
         <NavBar
           handleLogout={() => this.handleLogout()}
@@ -44,7 +44,7 @@ class AddressPage extends Component {
         />
         <div className="container">
           <div className="text-center disclosure-div">
-            DISCLOSURE: Do not enter in and save your private address in the space below. The input below is ment for your public address so we can track the ammount of crypto you have in your wallet and therefore assess it's value.
+            DISCLOSURE: Do not enter in and save your private address in the space below. The input below is ment for your Ethereum public address so we can track the ammount of crypto you have in your wallet and therefore assess it's value.
           </div>
           <div className="col-xs-11">
             <AddressList

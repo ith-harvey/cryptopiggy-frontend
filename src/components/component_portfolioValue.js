@@ -100,7 +100,7 @@ class PortfolioValue extends Component {
 
     if (!this.state.performWindowData.length) return (
       <div>
-        <AccountValue
+      <AccountValue
         totalUsd={this.props.totalUsd}
         totalEth={this.props.totalEth}
        />
@@ -108,7 +108,7 @@ class PortfolioValue extends Component {
          separatorClass='width-full margin-bottom'
        />
         <div className="text-center disclosure-div">
-          Uh oh, it looks like you have either: <br></br> <br></br> 1. Not setup your public addresses with Crypto Piggy. <br></br> <br></br> or <br></br> <br></br> 2. It hasn't been an hour since you added your first address! <br></br> <br></br> If it has been an hour, don't wait! email questions@cryptopiggy.us with your account information so we can help.
+          There isn't a graph of your account data because it hasn't been an hour since you added your first address! <br></br> <br></br> If it has been an hour, don't wait! email questions@cryptopiggy.us with your account information so we can help.
         </div>
       </div>
     )

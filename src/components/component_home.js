@@ -35,7 +35,8 @@ class Home extends Component {
 
 
   render() {
-
+    console.log('eth',this.props.totalEth)
+    console.log('usd',this.props.totalUsd)
 
 
     if (!this.props.totalUSD || !this.props.whenCreated) return <div className="container"><Loader /></div>
@@ -49,8 +50,7 @@ class Home extends Component {
         <ToolTip
           toolTipHeader="Setup your account"
           toolTipBody={["It looks like you still need to setup your Crypto Piggy account. ", <br></br>,<br></br>, "To do so, navigate to the drop down menu in the top right hand corner and select 'Address editor' to provide information about your portfolio."]}
-          displayToolTip={this.state.show}
-          toolTipType='dashboard'
+          displayToolTip={this.props.addressesArr.length ? false : true}
         />
         <div className="container">
           <div className="col-xs-12">
@@ -81,6 +81,7 @@ function mapStateToProps(state) {
     aDayAgo: state.performanceHistory.aDayAgo,
     oneWeekAgo: state.performanceHistory.oneWeekAgo,
     whenCreated: state.performanceHistory.whenCreated,
+    addressesArr: state.address.addressesArr
   }
 }
 

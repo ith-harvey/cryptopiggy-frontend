@@ -3,7 +3,7 @@ import {Button} from 'react-bootstrap';
 
 class ToolTip extends Component {
   state = {
-    show: true
+    show: this.props.displayToolTip
   }
 
   close() {

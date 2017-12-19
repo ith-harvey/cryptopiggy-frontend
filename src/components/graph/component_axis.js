@@ -118,36 +118,30 @@ class Axis extends Component {
             let copy = new Date(d)
             copy.setDate(1)
             if (d.getTime() === copy.getTime()) {
-              console.log('what we graph', d)
               return d
             }
 
             copy.setDate(5)
             if (d.getTime() === copy.getTime()) {
-              console.log('what we graph', d)
               return d
             }
 
             copy.setDate(10)
             if (d.getTime() === copy.getTime()) {
-              console.log('what we graph', d)
               return d
             }
 
             copy.setDate(15)
             if (d.getTime() === copy.getTime()) {
-              console.log('what we graph', d)
               return d
             }
 
             copy.setDate(20)
             if (d.getTime() === copy.getTime()) {
-              console.log('what we graph', d)
               return d
             }
             copy.setDate(25)
             if (d.getTime() === copy.getTime()) {
-              console.log('what we graph', d)
               return d
             }
           })
