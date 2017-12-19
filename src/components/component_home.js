@@ -52,20 +52,16 @@ class Home extends Component {
           toolTipBody={["It looks like you still need to setup your Crypto Piggy account. ", <br></br>,<br></br>, "To do so, navigate to the drop down menu in the top right hand corner and select 'Address editor' to provide information about your portfolio."]}
           displayToolTip={this.props.addressesArr.length ? false : true}
         />
-        <div className="container">
-          <div className="col-xs-12">
-            <PortfolioValue
-              totalEth={this.props.totalEth}
-              totalUsd={this.props.totalUSD}
-              aDayAgo={this.props.aDayAgo}
-              oneWeekAgo={this.props.oneWeekAgo}
-              oneMonthAgo={this.props.oneMonthAgo}
-              sixMonthsAgo={this.props.sixMonthsAgo}
-              oneYearAgo={this.props.oneYearAgo}
-              whenCreated={this.props.whenCreated}
-            />
-          </div>
-        </div>
+        <PortfolioValue
+          totalEth={this.props.totalEth}
+          totalUsd={this.props.totalUSD}
+          aDayAgo={this.props.aDayAgo}
+          oneWeekAgo={this.props.oneWeekAgo}
+          oneMonthAgo={this.props.oneMonthAgo}
+          sixMonthsAgo={this.props.sixMonthsAgo}
+          oneYearAgo={this.props.oneYearAgo}
+          whenCreated={this.props.whenCreated}
+        />
       </div>
     );
   }

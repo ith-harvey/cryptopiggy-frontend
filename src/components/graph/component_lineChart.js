@@ -24,8 +24,8 @@ class LineChart extends Component {
         display: true,
         data: {
             key: e.target.getAttribute('data-key'),
-            value: e.target.getAttribute('data-value'),
-            amount: e.target.getAttribute('data-amount')
+            value: Number(e.target.getAttribute('data-value')).toFixed(2),
+            amount: Number(e.target.getAttribute('data-amount')).toFixed(5)
             },
         pos: {
             x: e.target.getAttribute('cx'),
@@ -157,7 +157,7 @@ class LineChart extends Component {
 }
 
 LineChart.defaultProps = {
-  width: 300,
+  width: 360,
   height: 280,
   chartId: 'v1_chart'
 }
