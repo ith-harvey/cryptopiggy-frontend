@@ -36,7 +36,6 @@ class ContainedModal extends Component {
   }
 
   render() {
-    console.log('statshow', this.state.show)
     if (!this.state.show) { return <div></div> }
     return (
       <div className="modal-container tip">

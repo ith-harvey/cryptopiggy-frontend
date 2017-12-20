@@ -2,20 +2,6 @@ import React, {Component} from 'react'
 import * as d3 from 'd3';
 
 class ToolTip extends Component {
-  state = {
-    usd: 0,
-    eth: 0
-  }
-
-  componentWillMount() {
-
-
-    console.log('what we try to modify:', typeof this.props.tooltip.data.value)
-
-
-
-
-  }
 
   render() {
     let visibility="hidden";

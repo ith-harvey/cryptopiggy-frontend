@@ -57,22 +57,18 @@ class Axis extends Component {
             let copy = new Date(d)
             copy.setHours(12)
             if (d.getTime() === copy.getTime()) {
-              console.log('returning this', d)
               return d
             }
             copy.setHours(18)
             if (d.getTime() === copy.getTime()) {
-              console.log('returning this', d)
               return d
             }
             copy.setHours(0)
             if (d.getTime() === copy.getTime()) {
-              console.log('returning this', d)
               return d
             }
             copy.setHours(6)
             if (d.getTime() === copy.getTime()) {
-              console.log('returning this', d)
               return d
             }
           })
@@ -94,7 +90,6 @@ class Axis extends Component {
           .attr('class', 'tick hidden-tick')
           .filter( (d,i) => {
             if (i % 2 === 0) {
-              console.log('returning this', d)
               return d
             }
           })

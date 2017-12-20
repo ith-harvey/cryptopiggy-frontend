@@ -48,7 +48,6 @@ export function loginUser({ username, password}, callback) {
       url: `${ROOT_URL}/auth/signin`,
       data: { username, password }
     }).then(response => {
-      console.log('what we get back', response)
       dispatch({ type: AUTH_USER }); //setting state (Redux's Style)
       localStorage.setItem('jwtToken', response.data.token);
       callback()

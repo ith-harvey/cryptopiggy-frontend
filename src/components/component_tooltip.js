@@ -15,7 +15,7 @@ class ToolTip extends Component {
   }
 
   render() {
-    console.log('state show', this.state.show)
+
     if (!this.state.show) return <div></div>
 
     if (this.props.toolTipHeader === 'Setup your account') {

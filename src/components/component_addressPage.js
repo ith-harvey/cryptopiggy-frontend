@@ -30,7 +30,7 @@ class AddressPage extends Component {
   }
 
   render() {
-    console.log('here is what determines the show', this.props.addressesArr.length)
+
     return (
       <div>
         <ToolTip

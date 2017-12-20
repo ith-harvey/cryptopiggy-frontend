@@ -21,13 +21,12 @@ class NavBar extends Component {
             <Glyphicon glyph="menu-hamburger"></Glyphicon>
           </Dropdown.Toggle>
           <Dropdown.Menu>
-            <MenuItem className="dropdwn-menu" onClick={this.props.handleLogout.bind(this)}>Logout</MenuItem>
-
             <MenuItem className="dropdwn-menu">
-              <Link to="/"> Dashboard </Link>
-              <Link to="/addresses">Address editor </Link>
+              <Link to="/">Dashboard</Link>
+              <Link to="/addresses">Address editor</Link>
               <Link to="/about">About</Link>
             </MenuItem>
+            <MenuItem className="dropdwn-menu" onClick={this.props.handleLogout.bind(this)}>Logout</MenuItem>
           </Dropdown.Menu>
         </Dropdown>
       </nav>

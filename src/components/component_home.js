@@ -23,7 +23,6 @@ class Home extends Component {
     this.props.allAddressesWithBalance()
 
     if (this.props.whenCreated.valueBackThen) this.setState({show: true})
-    console.log('do we have value backthen1?', this.props.whenCreated.valueBackThen)
   }
 
 
@@ -35,8 +34,6 @@ class Home extends Component {
 
 
   render() {
-    console.log('eth',this.props.totalEth)
-    console.log('usd',this.props.totalUsd)
 
 
     if (!this.props.totalUSD || !this.props.whenCreated) return <div className="container"><Loader /></div>

@@ -80,7 +80,7 @@ h1 {
   margin: 0;
 }
 
-h4, h2, h3 {
+h4, h2, h3, h5 {
   font-weight: 100;
 }
 
@@ -363,4 +363,12 @@ body::-webkit-scrollbar {
 
 .width-full {
   width:100%;
+}
+
+.about-styling h3 {
+
+}
+
+.about-styling h5 {
+  color: rgb(125, 199, 244)
 }
