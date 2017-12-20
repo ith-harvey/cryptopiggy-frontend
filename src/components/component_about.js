@@ -47,6 +47,7 @@ class About extends Component {
           <p>We have plenty of ideas in regards to additional features like first and foremost supporting other currencies... If you have any other ideas, comments, questions or want to work on the project. Please don't hesitate to reach out to questions@cryptopiggy.us.</p>
 
           <p>Additionally since the project is maintained by a small group of people, we would also greatly appreciate your support. We accept Ethereum donations here:</p>
+          <p className="address">0x524229338cc35Cc4e01920b2780d61552fd8F726</p>
           </div>
         </div>
       </div>
