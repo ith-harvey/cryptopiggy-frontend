@@ -49,7 +49,7 @@ class Axis extends Component {
         }
 
 
-        if (this.props.numberOfNodes < 25 && this.props.xAxisInterval === 'hourly') {
+        if (this.props.numberOfNodes < 26 && this.props.xAxisInterval === 'hourly') {
           return d3.select(node)
           .call(this.props.axis).selectAll(".tick")
           .attr('class', 'tick hidden-tick')
@@ -84,7 +84,7 @@ class Axis extends Component {
           // IMPORTANT need to go back and clip the hours off of the date
         }
 
-        if (this.props.numberOfNodes < 25 && this.props.xAxisInterval === 'yearly') {
+        if (this.props.numberOfNodes < 26 && this.props.xAxisInterval === 'yearly') {
           return d3.select(node)
           .call(this.props.axis).selectAll(".tick")
           .attr('class', 'tick hidden-tick')
@@ -105,7 +105,7 @@ class Axis extends Component {
           // IMPORTANT need to go back and clip the hours off of the date
         }
 
-        if (24 < this.props.numberOfNodes < 60) {
+        if (25 < this.props.numberOfNodes < 60) {
           return d3.select(node)
           .call(this.props.axis).selectAll(".tick")
           .attr('class', 'tick hidden-tick')
