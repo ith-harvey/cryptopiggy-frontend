@@ -1,4 +1,4 @@
-# Destination (frontend of the application)
+# Crypto Piggy (frontend of the application)
 
 ![screenshot](https://github.com/ith-harvey/destination-travel/blob/master/screenshot.jpeg)
 
