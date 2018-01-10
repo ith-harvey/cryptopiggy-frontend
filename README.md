@@ -1,6 +1,6 @@
 # Crypto Piggy (frontend of the application)
 
-![screenshot](https://github.com/ith-harvey/cryptopiggy-frontend/blob/master/style/images/Screen%20Shot%202017-12-18%20at%202.59.00%20PM.png)
+![screenshot](https://github.com/ith-harvey/cryptopiggy-frontend/blob/master/style/images/Marquee%20(2).jpg)
 
 [Node.js backend of the application](https://github.com/ith-harvey/cryptopiggy-backend)
 
