@@ -1,6 +1,6 @@
 # Crypto Piggy (frontend of the application)
 
-![screenshot](https://github.com/ith-harvey/destination-travel/blob/master/screenshot.jpeg)
+![screenshot](https://github.com/ith-harvey/cryptopiggy-frontend/blob/master/style/images/Screen%20Shot%202018-01-04%20at%204.18.51%20PM.png)
 
 [Node.js backend of the application](https://github.com/ith-harvey/cryptopiggy-backend)
 
