@@ -18,7 +18,7 @@ Our dashboard tracks the following views of your portfolio:
 We plan on adding additional cryptocurrencies and ERC20 tokens in the coming months.
 
 ## Screen Shots
-<img src="https://github.com/ith-harvey/cryptopiggy-frontend/blob/master/style/images/Screen%20Shot%202018-01-04%20at%204.18.51%20PM.png" height="350">
+<img src="https://github.com/ith-harvey/cryptopiggy-frontend/blob/master/style/images/Screen%20Shot%202018-01-04%20at%204.18.51%20PM.png" height="400">
 
 <img src="https://github.com/ith-harvey/cryptopiggy-frontend/blob/master/style/images/Screen%20Shot%202017-12-18%20at%203.00.39%20PM.png" height="350">
 
