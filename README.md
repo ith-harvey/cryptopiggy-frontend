@@ -1,6 +1,6 @@
 # Crypto Piggy (frontend of the application)
 
-![screenshot](https://github.com/ith-harvey/cryptopiggy-frontend/blob/master/style/images/Screen%20Shot%202018-01-04%20at%204.18.51%20PM.png)
+![screenshot](https://github.com/ith-harvey/cryptopiggy-frontend/blob/master/style/images/Screen%20Shot%202017-12-18%20at%202.59.00%20PM.png)
 
 [Node.js backend of the application](https://github.com/ith-harvey/cryptopiggy-backend)
 
@@ -16,6 +16,14 @@ Our dashboard tracks the following views of your portfolio:
  - Since account creation
 
 We plan on adding additional cryptocurrencies and ERC20 tokens in the coming months.
+
+## Screen Shots
+![screenshot](https://github.com/ith-harvey/cryptopiggy-frontend/blob/master/style/images/Screen%20Shot%202018-01-04%20at%204.18.51%20PM.png)
+
+
+![screenshot](https://github.com/ith-harvey/cryptopiggy-frontend/blob/master/style/images/Screen%20Shot%202017-12-18%20at%203.00.39%20PM.png)
+
+![screenshot](https://github.com/ith-harvey/cryptopiggy-frontend/blob/master/style/images/Screen%20Shot%202017-12-18%20at%202.59.00%20PM.png)
 
 ## Built With
 
