@@ -59,7 +59,6 @@ class LineChart extends Component {
       return d3.axisBottom(x)
           .tickValues(
             this.props.performanceData.map( (d,i) => {
-              // console.log('d.date: ', d)
               return d.date;
           })
           )
@@ -110,14 +109,6 @@ class LineChart extends Component {
           })])
           .range([h, 0]);
 
-      let line = d3.line()
-          .x(function (d) {
-              return x(d.date);
-          })
-          .y(function (d) {
-              return y(d.value);
-          }).curve(d3.curveCardinal)
-
       let transform = `translate(${margin.left}, ${margin.top})`;
 
       let yAxis = d3.axisLeft(y)
@@ -129,6 +120,16 @@ class LineChart extends Component {
           .ticks(5)
           .tickFormat("")
           .tickSize(-w, 0, 0);
+
+      let line = d3.line()
+          .x(function (d) {
+            console.log('x', d.date)
+            return x(d.date);
+          })
+          .y(function (d) {
+            console.log('y', d.value)
+            return y(d.value);
+          }).curve(d3.curveCardinal);
 
       return (
           <svg id={this.props.chartId} width={this.state.width} height={this.props.height} className="col-xs-12">
@@ -142,12 +143,16 @@ class LineChart extends Component {
                 xAxisInterval={this.props.xAxisInterval}
                 axisType="x"/>
 
-              <path className="line" d={line(this.props.performanceData)} strokeLinecap="round"/>
+              {/* <path className="line" d={line(this.props.performanceData)} strokeLinecap="round"/> */}
+
+
 
               <Dots data={this.props.performanceData} x={x} y={y}
                 showToolTip={(e)=> this.showToolTip(e)}
                 hideToolTip={(e) => this.hideToolTip(e)}
               />
+
+
 
               <ToolTip tooltip={this.state.tooltip}/>
             </g>
