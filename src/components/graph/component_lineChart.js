@@ -68,7 +68,6 @@ class LineChart extends Component {
       return d3.axisBottom(x)
           .tickValues(
             this.props.performanceData.map( (d,i) => {
-              // console.log('d.date: ', d)
               return d.date;
           })
           )
@@ -76,12 +75,6 @@ class LineChart extends Component {
          .ticks(5);
     }
   }
-
-
-  buildChart() {
-
-  }
-
 
   render() {
     if (this.props.performanceData.length < 1) return <div />
@@ -99,13 +92,13 @@ class LineChart extends Component {
 
       let x = d3.scaleTime()
           .domain(d3.extent(this.props.performanceData, function (d) {
-              return d.date;
+            return d.date;
           }))
           .rangeRound([0, w]);
 
       let y = d3.scaleLinear()
           .domain([0,d3.max(this.props.performanceData,function(d){
-              return d.value+100;
+            return d.value+100;
           })])
           .range([h, 0]);
 
@@ -122,20 +115,27 @@ class LineChart extends Component {
           .tickSize(-w, 0, 0);
 
       let line = d3.line()
-          .x(function (d) {
-            console.log('x', d.date)
-            return x(d.date);
-          })
-          .y(function (d) {
-            console.log('y', d.value)
-            return y(d.value);
-          }).curve(d3.curveCardinal);
+        .x(function(d) {
+          console.log('d = ', d)
+          return x(d.date); })
+        .y(function(d) { return y(d.value); })
+        .curve(d3.curveCardinal);
+
+          // .x(function (d) {
+          //   console.log('x', d.date)
+          //   return x(d.date);
+          // })
+          // .y(function (d) {
+          //   console.log('y', d.value)
+          //   return y(d.value);
+          // })
+
 
       return (
           <svg id={this.props.chartId} width={this.state.width} height={this.props.height} className="col-xs-12">
             <g transform={transform}>
 
-              <Grid h={h} grid={yGrid} gridType="y"/>
+              <Grid h={h} grid={  yGrid} gridType="y"/>
 
               <Axis h={h} axis={yAxis} axisType="y" />
               <Axis h={h} axis={xAxis}
@@ -143,7 +143,7 @@ class LineChart extends Component {
                 xAxisInterval={this.props.xAxisInterval}
                 axisType="x"/>
 
-              {/* <path className="line" d={line(this.props.performanceData)} strokeLinecap="round"/> */}
+              <path className="line" d={line(this.props.performanceData)} strokeLinecap="round"/>
 
 
 
