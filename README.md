@@ -26,10 +26,11 @@ We plan on adding additional cryptocurrencies and ERC20 tokens in the coming mon
 
 ## Built With
 
-* [React Redux Starter](https://github.com/davezuko/react-redux-starter-kit) - The web framework used
 * [React](https://reactjs.org/) - The web framework used
 * [Redux](https://redux.js.org/) - State management
-* [Bootstrap](https://react-bootstrap.github.io/) - CSS framework
+* [D3](https://d3js.org/) - Data visualization
+* [React Redux Starter](https://github.com/davezuko/react-redux-starter-kit) - The web framework used
+* [React-Bootstrap](https://react-bootstrap.github.io/) - CSS framework
 
 ## License
 
