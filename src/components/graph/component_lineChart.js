@@ -116,19 +116,9 @@ class LineChart extends Component {
 
       let line = d3.line()
         .x(function(d) {
-          console.log('d = ', d)
           return x(d.date); })
         .y(function(d) { return y(d.value); })
         .curve(d3.curveCardinal);
-
-          // .x(function (d) {
-          //   console.log('x', d.date)
-          //   return x(d.date);
-          // })
-          // .y(function (d) {
-          //   console.log('y', d.value)
-          //   return y(d.value);
-          // })
 
 
       return (
