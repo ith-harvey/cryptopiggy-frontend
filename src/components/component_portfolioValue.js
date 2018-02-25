@@ -19,7 +19,6 @@ class PortfolioValue extends Component {
   }
 
   setWindow(e) {
-
     let handleInput = e => e ? e.target.getAttribute("value") : 'whenCreated'
 
     let diff, windowData, percentDiff, xInterval
@@ -62,7 +61,6 @@ class PortfolioValue extends Component {
       })
     }
 
-
     switch(handleInput(e)) {
       case '24h':
         setLineChrtValues(this.props.aDayAgo)
@@ -98,6 +96,9 @@ class PortfolioValue extends Component {
 
   render() {
 
+    // if (timeWindow.valueBackThen === null
+    // || performWindowData.length === 0) -> graph will not rendering
+    // see line 47 ^
     if (!this.state.performWindowData.length) return (
       <div>
       <AccountValue
@@ -108,7 +109,7 @@ class PortfolioValue extends Component {
          separatorClass='width-full margin-bottom'
        />
         <div className="text-center disclosure-div">
-          There isn't a graph of your account data because it hasn't been an hour since you added your first address! <br></br> <br></br> If it has been an hour, don't wait! email questions@cryptopiggy.us with your account information so we can help.
+          There isn't a graph of your account data because it hasn't been an hour since you added your first address! <br></br> <br></br> If it has been an hour, don't wait. Email questions@cryptopiggy.us with your account information so we can help.
         </div>
       </div>
     )
